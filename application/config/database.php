@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'admin',
-	'password' => 'admin',
-	'database' => 'projetweb',
+	'hostname' => 'db113074.sql-pro.online.net',
+	'username' => 'db113074',
+	'password' => 'ProjetMDP1$',
+	'database' => 'db347518_projetweb',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
