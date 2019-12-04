@@ -1,3 +1,5 @@
+
+<div class="col-sm-6">
 <div class="card mb-3" style="max-width: 540px;">
 	<div class="row no-gutters">
 		<div class="col-md-4">
@@ -11,4 +13,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>
