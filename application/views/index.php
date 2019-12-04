@@ -1,4 +1,7 @@
 <?php
 include 'template/header.php';
-include 'template/deals.php';
+foreach ($deal as $de)
+{
+	include 'template/deals.php';
+}
 include 'template/footer.php';

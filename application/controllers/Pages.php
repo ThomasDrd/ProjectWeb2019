@@ -21,7 +21,7 @@ class Pages extends CI_Controller {
 	public function index()
 	{
 		$this->load->database();
-		$select = $this->db->query('SELECT * FROM deals')->result();
+		$select['deal'] = $this->db->query('SELECT * FROM deals')->result();
 		$this->load->view('index', $select);
 	}
 
