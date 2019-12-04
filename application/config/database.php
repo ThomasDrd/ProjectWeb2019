@@ -75,10 +75,17 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
+<<<<<<< HEAD
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
 	'database' => 'projetweb',
+=======
+	'hostname' => 'db113074.sql-pro.online.net',
+	'username' => 'db113074',
+	'password' => 'ProjetMDP1$',
+	'database' => 'db347518_projetweb',
+>>>>>>> 14015ad7c726bfedf142c9df6c6f5a50cf9c723c
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
