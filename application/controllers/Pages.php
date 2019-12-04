@@ -25,8 +25,19 @@ class Pages extends CI_Controller {
 		$this->load->view('index', $select);
 	}
 
-	public function details()
-	{
-		$this->load->view('details');
+	public function details($id)
+	{	
+		$this->load->database();
+		$select['deal'] = $this->db->query('SELECT * FROM deals WHERE deal_id = '.$id)->result();
+		$this->load->view('details', $select);
+
 	}
+
+		public function login()
+	{	
+
+	}
+
+
+
 }

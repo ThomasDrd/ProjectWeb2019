@@ -7,7 +7,7 @@
 		</div>
 		<div class="col-md-8">
 			<div class="card-body">
-				<a class="card-title" href="details"><?php echo $de->nom; ?></a>
+				<a class="card-title" href="pages/details/<?php echo $de->deal_id; ?>"><?php echo $de->nom; ?></a>
 				<p class="card-text"><?php echo $de->description; ?></p>
 				<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
 			</div>
