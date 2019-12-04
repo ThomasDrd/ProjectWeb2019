@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <html>
 <head>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -17,7 +18,7 @@
 	<div class="collapse navbar-collapse" id="navbarNav ">
 		<ul class="nav navbar-nav navbar-right">
 			<li class="nav-item active">
-				<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="pages/login">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">Features</a>
@@ -28,6 +29,17 @@
 			<li class="nav-item">
 				<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
 			</li>
+			<?php if(isset($_SESSION['user'])){
+			 	echo ('<li class="nav-link">
+						Welcome '.$_SESSION['user'].'
+					   </li>');
+			} ?>
+			<?php if(isset($_SESSION['user'])){
+			 	echo ('<li class="nav-item">
+						<a class="nav-link" href="pages/logout" tabindex="-1" aria-disabled="true">Se déconnecter</a>
+					   </li>');
+			} ?>
+
 		</ul>
 	</div>
 </nav>
