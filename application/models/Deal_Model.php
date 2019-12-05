@@ -13,9 +13,4 @@ class Deal_Model extends CI_Model
 	{
 		return  $this->db->query('SELECT * FROM deals')->result();
 	}
-
-	public function searchUser()
-	{
-		return  $this->db->query('SELECT * FROM users')->result();
-	}
 }

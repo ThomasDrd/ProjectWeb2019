@@ -24,6 +24,7 @@ class Pages extends CI_Controller {
 		parent::__construct();
 		$this->load->database();
 		$this->load->model('Deal_Model');
+		$this->load->model('User_Model');
 	}
 
 	public function index()
@@ -34,9 +35,8 @@ class Pages extends CI_Controller {
 	}
 
 	public function details($id)
-	{	
-		$this->load->database();
-		$select['deal'] = $this->db->query('SELECT * FROM deals WHERE deal_id = '.$id)->result();
+	{
+		$select['deal'] = $this->Deal_Model->searchByid($id);
 		$this->load->view('details', $select);
 
 	}
@@ -52,11 +52,11 @@ class Pages extends CI_Controller {
 		$name = (isset($_POST['name'])) ? $_POST['name'] 	: "";
 		$pwd  = (!empty($_POST['pwd'])) ? $_POST['pwd'] 	: "";
 		$this->load->database();
-		$query = $this->db->query('SELECT * FROM users');
-			foreach($query->result_array() as $row) {
-				if($row['pseudo'] == $name AND $pwd == $row['password']){	//password_verify($pwd, $row['user_pwd'])) {
-					    $_SESSION['user'] = $row['pseudo'];
-					    $_SESSION['idUser'] = $row['user_id'];
+		$query = $this->User_Model->search();
+			foreach($query as $row) {
+				if($row->pseudo == $name AND $pwd == $row->password){	//password_verify($pwd, $row->user_pwd)) {
+					    $_SESSION['user'] = $row->pseudo;
+					    $_SESSION['idUser'] = $row->user_id;
 				} 
 			}
 		session_write_close();
@@ -80,7 +80,7 @@ class Pages extends CI_Controller {
 	{
 		$this->load->database();
 		$select['deal'] = $this->Deal_Model->searchDeal();
-		$select['user'] = $this->Deal_Model->searchUser();
+		$select['user'] = $this->User_Model->search();
 		$this->load->view('adminPanel', $select);
 	}
 
