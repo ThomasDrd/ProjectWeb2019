@@ -43,8 +43,7 @@ class Pages extends CI_Controller {
     	session_start();
 		$name = (isset($_POST['name'])) ? $_POST['name'] 	: "";
 		$pwd  = (!empty($_POST['pwd'])) ? $_POST['pwd'] 	: "";
-		$_SESSION['user'] = 0;
-    	$this->load->database();
+		$this->load->database();
 		$query = $this->db->query('SELECT * FROM users');
 			foreach($query->result_array() as $row) {
 				if($row['pseudo'] == $name AND $pwd == $row['password']){	//password_verify($pwd, $row['user_pwd'])) {
@@ -52,13 +51,21 @@ class Pages extends CI_Controller {
 					    $_SESSION['idUser'] = $row['user_id'];
 				} 
 			}
-		header('Location: /ProjectWeb2019/index.php');
+		session_write_close();
+		if(isset($_SESSION['user'])){
+			//header('Location: /ProjectWeb2019/pages/users.php');
+			$this->load->view('users');
+		}else{
+			//header('Location: /ProjectWeb2019/index.php'); 
+			$this->index();
+		}
+		
     }
     	public function logout()
 	{	
 		session_start();
 		session_destroy();
-		header('Location: /ProjectWeb2019/index.php');
+		$this->index();
 	}
 
 
