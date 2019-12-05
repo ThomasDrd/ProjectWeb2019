@@ -18,10 +18,18 @@ class Pages extends CI_Controller {
 	 * map to /deals.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->database();
+		$this->load->model('Deal_Model');
+	}
+
 	public function index()
 	{
 		$this->load->database();
-		$select['deal'] = $this->db->query('SELECT * FROM deals')->result();
+		$select['deal'] = $this->Deal_Model->searchDeal();
 		$this->load->view('index', $select);
 	}
 
@@ -71,8 +79,8 @@ class Pages extends CI_Controller {
 	public function admin()
 	{
 		$this->load->database();
-		$select['deal'] = $this->db->query('SELECT * FROM deals')->result();
-		$select['user'] = $this->db->query('SELECT * FROM users')->result();
+		$select['deal'] = $this->Deal_Model->searchDeal();
+		$select['user'] = $this->Deal_Model->searchUser();
 		$this->load->view('adminPanel', $select);
 	}
 
