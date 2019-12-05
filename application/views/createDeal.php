@@ -8,12 +8,6 @@
 	<title>Document</title>
 </head>
 <body>
-<?php
-foreach ($deal as $de)
-{
-	echo $de->nom.'<br/>';
-	echo $de->description;
-}
-?>
+<p>Creer un deal</p>
 </body>
 </html>

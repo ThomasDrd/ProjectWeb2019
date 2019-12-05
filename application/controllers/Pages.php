@@ -68,5 +68,13 @@ class Pages extends CI_Controller {
 		$this->index();
 	}
 
+	public function admin()
+	{
+		$this->load->database();
+		$select['deal'] = $this->db->query('SELECT * FROM deals')->result();
+		$select['user'] = $this->db->query('SELECT * FROM users')->result();
+		$this->load->view('adminPanel', $select);
+	}
+
 
 }
