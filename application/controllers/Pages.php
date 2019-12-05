@@ -25,7 +25,7 @@ class Pages extends CI_Controller {
 		$this->load->database();
 		$this->load->model('Deal_Model');
 		$this->load->model('User_Model');
-        $this->load->model('Comments_Model');
+   /*     $this->load->model('Comments_Model');*/
 	}
 
 	public function index()

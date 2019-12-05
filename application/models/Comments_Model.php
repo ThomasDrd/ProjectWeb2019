@@ -1,5 +1,5 @@
 <?php
-
+/*
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
@@ -17,4 +17,4 @@ class comments_Model extends CI_Model{
     {
         return  $this->db->query('INSERT INTO comments(CONTENUCOMMENTS, DEAL_ID, USER_ID) VALUES(:contenuComments, :deal_id, :user_id')->result();
     }
-}
+}*/
