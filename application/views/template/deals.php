@@ -26,15 +26,15 @@
 																					}else{
 																						if($date->h == 0){
 																							$date1 = $date->format('%d jours et %i minutes');
-																						}elseif($date->h == 1){
-																							$date1 = $date->format('%d jours, %h heure et %i minutes');
+																											$date1 = $date->format('%d jours, %h heure et %i minutes');
 																						}else{
 																							$date1 = $date->format('%d jours, %h heures et %i minutes');
 																						}
 																					}
 																					print_r($date1); ?></small></p>
 			</div>
-		</div>
-	</div>
+		</div>								}elseif($date->h == 1){
+
+    </div>
 </div>
 </div>
