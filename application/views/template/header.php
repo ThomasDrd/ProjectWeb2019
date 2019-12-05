@@ -52,6 +52,11 @@
             <button type="submit" class="btn btn-white btn-raised btn-fab btn-round">
                 <i class="material-icons">search</i>
             </button>
+			<?php if(isset($_SESSION['user'])){
+				echo ('<li class="nav-item">
+						<a class="nav-link" href="'.base_url('deal/create').'" tabindex="-1" aria-disabled="true">Creer un deal</a>
+					   </li>');
+			} ?>
         </form>
 	</div>
 </nav>

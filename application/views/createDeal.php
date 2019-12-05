@@ -1,7 +1,7 @@
 
 <?php include 'template/header.php'?>
 
-<form action="create" method="post">
+<form action="dealCreate" method="post">
 	<div class="form-group">
 		<label for="nom">Nom du deal</label>
 		<input type="text" id="nom" class="form-control" name="nom" required>
@@ -30,10 +30,5 @@
 </form>
 
 <?php
-
-if (!empty($_POST))
-{
-	$this->Deal_Model->addDeal($_POST['nom'], $_POST['description'], $_POST['conditions'], $_SESSION['idUser'] ,$_POST['image'], $_POST['dateexp'], $_POST['datedeb']);
-}
 
 include 'template/footer.php'; ?>
