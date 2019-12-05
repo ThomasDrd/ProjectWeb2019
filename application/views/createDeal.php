@@ -1,18 +1,39 @@
 
 <?php include 'template/header.php'?>
-<form>
+
+<form action="create" method="post">
 	<div class="form-group">
-		<label for="exampleInputEmail1">Email address</label>
-		<input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-		<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		<label for="nom">Nom du deal</label>
+		<input type="text" id="nom" class="form-control" name="nom" required>
 	</div>
 	<div class="form-group">
-		<label for="exampleInputPassword1">Password</label>
-		<input type="password" class="form-control" id="exampleInputPassword1">
+		<label for="description">Description</label>
+		<input type="text" class="form-control" id="description" name="description" required>
 	</div>
-	<div class="form-group form-check">
-		<input type="checkbox" class="form-check-input" id="exampleCheck1">
-		<label class="form-check-label" for="exampleCheck1">Check me out</label>
+	<div class="form-group">
+		<label for="conditions">Conditions</label>
+		<input type="text" class="form-control" id="conditions" name="conditions" required>
+	</div>
+	<div class="form-group">
+		<label for="img">Image</label>
+		<input type="text" class="form-control" id="img" name="image" required>
+	</div>
+	<div class="form-group">
+		<label for="datedeb">Date début</label>
+		<input type="date" class="form-control" id="datedeb" name="datedeb">
+	</div>
+	<div class="form-group">
+		<label for="dateexp">Date expiration</label>
+		<input type="date" class="form-control" id="dateexp" name="dateexp">
 	</div>
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+<?php
+
+if (!empty($_POST))
+{
+	$this->Deal_Model->addDeal($_POST['nom'], $_POST['description'], $_POST['conditions'], $_SESSION['idUser'] ,$_POST['image'], $_POST['dateexp'], $_POST['datedeb']);
+}
+
+include 'template/footer.php'; ?>
