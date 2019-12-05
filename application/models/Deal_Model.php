@@ -13,4 +13,10 @@ class Deal_Model extends CI_Model
 	{
 		return  $this->db->query('SELECT * FROM deals')->result();
 	}
+
+	public function addDeal($nom, $des, $cond, $usr, $img ,$ddeb, $dexp)
+	{
+		return  $this->db->query('INSERT INTO deals (nom, description, conditions,user_id, img, date_exp, date_deb) 
+		VALUES ("'.$nom.'","'. $des .'", "'.$cond.'", '.$usr.',"'.$img.'", "'.$ddeb.'", "'.$dexp.'")');
+	}
 }

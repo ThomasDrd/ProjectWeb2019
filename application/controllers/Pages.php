@@ -42,41 +42,6 @@ class Pages extends CI_Controller {
 
 	}
 
-		public function login()
-	{	
-		$this->load->view('login');
-	}
-
-    	public function loguser()
-    {
-    	session_start();
-		$name = (isset($_POST['name'])) ? $_POST['name'] 	: "";
-		$pwd  = (!empty($_POST['pwd'])) ? $_POST['pwd'] 	: "";
-		$this->load->database();
-		$query = $this->User_Model->search();
-			foreach($query as $row) {
-				if($row->pseudo == $name AND $pwd == $row->password){	//password_verify($pwd, $row->user_pwd)) {
-					    $_SESSION['user'] = $row->pseudo;
-					    $_SESSION['idUser'] = $row->user_id;
-				} 
-			}
-		session_write_close();
-		if(isset($_SESSION['user'])){
-			//header('Location: /ProjectWeb2019/pages/users.php');
-			$this->load->view('users');
-		}else{
-			//header('Location: /ProjectWeb2019/index.php'); 
-			$this->index();
-		}
-		
-    }
-    	public function logout()
-	{	
-		session_start();
-		session_destroy();
-		$this->index();
-	}
-
 	public function admin()
 	{
 		$this->load->database();
