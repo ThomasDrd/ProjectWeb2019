@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start(); 
+ $this->load->helper('url');?>
+
 <html>
 <head>
 
@@ -12,16 +14,17 @@
 <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<a class="navbar-brand" href="index">Super Forfait Mobile</a>
+		<a class="navbar-brand" href=" <?php echo base_url('pages/index')?>" >Super Forfait Mobile</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
 		<ul class="navbar-nav mr-auto">
-			<?php if(!isset($_SESSION['user'])){
-			 	echo ('<li class="nav-item active">
-						<a class="nav-link" href="login">Log In<span class="sr-only">(current)</span></a>
+			<?php 
+				if(!isset($_SESSION['user'])){
+			 	print_r('<li class="nav-item active">
+						<a class="nav-link" href="'.base_url('users/login').'">Log In<span class="sr-only">(current)</span></a>
 					   </li>');
 			} ?>
 			
@@ -33,12 +36,12 @@
 			</li>
 			<?php if(isset($_SESSION['user'])){
 			 	echo ('<li class="nav-item">
-						<a class="nav-link" href="users" tabindex="-1" aria-disabled="true">Welcome '.$_SESSION['user'].'</a>
+						<a class="nav-link" href="'.base_url('users/compte').'" tabindex="-1" aria-disabled="true">Welcome '.$_SESSION['user'].'</a>
 					   </li>');
 			} ?>
 			<?php if(isset($_SESSION['user'])){
 			 	echo ('<li class="nav-item">
-						<a class="nav-link" href="logout" tabindex="-1" aria-disabled="true">Se déconnecter</a>
+						<a class="nav-link" href="'.base_url('users/logout').'" tabindex="-1" aria-disabled="true">Se déconnecter</a>
 					   </li>');
 			} ?>
 		</ul>
@@ -51,8 +54,8 @@
             </button>
         </form>
 	</div>
-    </div>
 </nav>
+<div class="container">
 <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
 <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
 <script src="./assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>
