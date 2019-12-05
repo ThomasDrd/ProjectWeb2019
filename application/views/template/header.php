@@ -25,7 +25,7 @@
 	<div class="collapse navbar-collapse" id="navbarNav ">
 		<ul class="nav navbar-nav">
 			<li class="nav-item active">
-				<a class="nav-link" href="pages/login">Home <span class="sr-only">(current)</span></a>
+				<a class="nav-link" href="login">Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#">Features</a>
@@ -43,7 +43,7 @@
 			} ?>
 			<?php if(isset($_SESSION['user'])){
 			 	echo ('<li class="nav-item">
-						<a class="nav-link" href="pages/logout" tabindex="-1" aria-disabled="true">Se déconnecter</a>
+						<a class="nav-link" href="logout" tabindex="-1" aria-disabled="true">Se déconnecter</a>
 					   </li>');
 			} ?>
 		</ul>
