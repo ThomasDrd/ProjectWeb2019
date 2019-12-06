@@ -9,7 +9,7 @@
 			<div class="card-body">
 				<a class="card-title" href="details/<?php echo $de->deal_id; ?>"><?php echo $de->nom; ?></a>
 				<p class="card-text"><?php echo $de->description; ?></p>
-				<p class="card-text"><small class="text-muted">Ajouter il y à <?php $fuseau  = new DatetimeZone('Europe/Paris');
+				<p class="card-text"><small class="text-muted">Ajouté il y à <?php $fuseau  = new DatetimeZone('Europe/Paris');
 																					$dateNow = new Datetime('now', $fuseau);
 																					$dateOld = new Datetime($de->date_ajout, $fuseau); 
 																					$date = $dateOld->diff($dateNow);
@@ -33,7 +33,7 @@
 																					}
 																					print_r($date1); ?></small></p>
 			</div>
-		</div>								}elseif($date->h == 1){
+		</div>
 
     </div>
 </div>
