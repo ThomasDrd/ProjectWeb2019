@@ -23,6 +23,6 @@ class Deal_Model extends CI_Model
 
 	public function deleteDeal($id)
 	{
-		$this->db->query('DELETE FROM deals WHERE deal_id = '. $id);
+		$this->db->query('DELETE FROM deals WHERE deal_id = '.$id);
 	}
 }

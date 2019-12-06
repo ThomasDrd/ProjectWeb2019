@@ -26,6 +26,11 @@
 		<label for="dateexp">Date expiration</label>
 		<input type="date" class="form-control" id="dateexp" name="dateexp">
 	</div>
+	<div class="form-group">
+		<select type="user" class="form-control" id="user" name="user" hidden>
+			<option ><?php echo $_SESSION['idUser'];?>
+		</select>
+	</div>
 	<button type="submit" class="btn btn-primary">Submit</button>
 </form>
 

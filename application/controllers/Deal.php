@@ -9,6 +9,7 @@ class Deal extends CI_Controller
 		parent::__construct();
 		$this->load->database();
 		$this->load->model('Deal_Model');
+		$this->load->helper('url');
 	}
 
 
@@ -25,8 +26,9 @@ class Deal extends CI_Controller
 			$des = $_POST['description'];
 			$cond = $_POST['conditions'];
 			$img = $_POST['image'];
+			$usr = $_POST['user'];
 
-			if ( isset($_POST['dateexp']))
+			if (isset($_POST['dateexp']))
 			{
 				$daexp = $_POST['dateexp'];
 			}
@@ -44,7 +46,8 @@ class Deal extends CI_Controller
 				$daexp = null;
 			}
 
-			$this->Deal_Model->addDeal($nom, $des, $cond, $_SESSION['idUser'] ,$img, $daexp, $dadeb);
+			$this->Deal_Model->addDeal($nom, $des, $cond, $usr, $img, $daexp, $dadeb);
+			header('Location: '.base_url('pages/index'));
 
 		}
 	}
@@ -59,5 +62,11 @@ class Deal extends CI_Controller
 	{
 		$select['deal'] = $this->Deal_Model->searchByid($id);
 		$this->load->view('deleteDeal', $select);
+	}
+
+	public function deleteDeal($idDeal)
+	{
+		$this->Deal_Model->deleteDeal($idDeal);
+		header('Location: '.base_url('pages/admin'));
 	}
 }
