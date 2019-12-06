@@ -11,7 +11,7 @@ class User_Model extends CI_Model
 
 	public function userInfo($user)
 	{
-		return 	$this->db->query('SELECT * FROM users WHERE user_id = '.$user);
+		return 	$this->db->query('SELECT * FROM users WHERE user_id = '. $user)->result();
 	}
 
 }
