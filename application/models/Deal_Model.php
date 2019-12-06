@@ -20,6 +20,12 @@ class Deal_Model extends CI_Model
 		VALUES ("'.$nom.'","'. $des .'", "'.$cond.'", '.$usr.',"'.$img.'", "'.$ddeb.'", "'.$dexp.'")');
 	}
 
+	public function updateDeal($nom, $des, $cond, $usr, $img ,$ddeb, $dexp, $id)
+	{
+		$this->db->query('UPDATE deals SET nom = "'.$nom.'", description = "'. $des .'", conditions =  "'.$cond.'",user_id = '.$usr.' , img = "'.$img.'", date_exp =  "'.$dexp.'", date_deb = "'.$ddeb.'"
+		WHERE deal_id ='.$id);
+	}
+
 
 	public function deleteDeal($id)
 	{

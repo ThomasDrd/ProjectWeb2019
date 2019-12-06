@@ -13,54 +13,52 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
 		<a class="navbar-brand" href=" <?php echo base_url('pages/index')?>" >Super Forfait Mobile</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-		<ul class="navbar-nav mr-auto">
-			<?php 
-				if(!isset($_SESSION['user'])){
-			 	print_r('<li class="nav-item active">
-						<a class="nav-link" href="'.base_url('users/login').'">Log In<span class="sr-only">(current)</span></a>
-					   </li>');
-			} ?>
-			
-			<li class="nav-item">
-				<a class="nav-link" href="#">Features</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="#">Pricing</a>
-			</li>
-			<?php if(isset($_SESSION['user'])){
-			 	echo ('<li class="nav-item">
-						<a class="nav-link" href="'.base_url('users/compte').'" tabindex="-1" aria-disabled="true">Welcome '.$_SESSION['user'].'</a>
-					   </li>');
-			} ?>
-			<?php if(isset($_SESSION['user'])){
-			 	echo ('<li class="nav-item">
-						<a class="nav-link" href="'.base_url('users/logout').'" tabindex="-1" aria-disabled="true">Se déconnecter</a>
-					   </li>');
-			} ?>
-		</ul>
-        <form class="form-inline ml-auto">
+        <!--<form class="form-inline ml-auto">
             <div class="form-group has-white">
                 <input type="text" class="form-control" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-white btn-raised btn-fab btn-round">
                 <i class="material-icons">search</i>
             </button>
-			<?php if(isset($_SESSION['user'])){
-				echo ('<li class="nav-item">
-						<a class="nav-link" href="'.base_url('deal/create').'" tabindex="-1" aria-disabled="true">Creer un deal</a>
+        </form>-->
+		<ul class="navbar-nav ml-auto">
+			<?php
+			if (isset($_SESSION['user']))
+			{
+				if ($_SESSION['idUser'] == 1  ) {
+					echo'
+						<li class="nav-item">
+						<a class="nav-link" href="'.base_url('pages/admin').'">Panel Admin</a>
+					   </li>
+						';
+				}
+			}
+			if(!isset($_SESSION['user'])){
+				print_r('<li class="nav-item">
+						<a class="nav-link" href="'.base_url('users/login').'">Log In</a>
 					   </li>');
 			} ?>
-        </form>
+			<?php if(isset($_SESSION['user'])){
+				echo ('<li class="nav-item">
+						<a class="nav-link" href="'.base_url('users/compte').'">Welcome '.$_SESSION['user'].'</a>
+					   </li>');
+			} ?>
+			<?php if(isset($_SESSION['user'])){
+				echo ('<li class="nav-item">
+						<a class="nav-link" href="'.base_url('users/logout').'">Se déconnecter</a>
+					   </li>');
+			} ?>
+		</ul>
 	</div>
 </nav>
-<div class="container">
+<div class="container" style="margin-top: 100px">
 <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
 <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
 <script src="./assets/js/core/bootstrap-material-design.min.js" type="text/javascript"></script>

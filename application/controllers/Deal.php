@@ -58,6 +58,31 @@ class Deal extends CI_Controller
 		$this->load->view('updateDeal', $select);
 	}
 
+	public function dealUpdate($id)
+	{
+		if (!empty($_POST)) {
+			$nom = $_POST['nom'];
+			$des = $_POST['description'];
+			$cond = $_POST['conditions'];
+			$img = $_POST['image'];
+			$usr = $_POST['user'];
+
+			if (isset($_POST['dateexp'])) {
+				$daexp = $_POST['dateexp'];
+			} else {
+				$daexp = null;
+			}
+
+			if (isset($_POST['datedeb'])) {
+				$dadeb = $_POST['datedeb'];
+			} else {
+				$daexp = null;
+			}
+		}
+		$this->Deal_Model->updateDeal($nom, $des, $cond, $usr, $img, $daexp, $dadeb, $id);
+		header('Location: '.base_url('pages/admin'));
+	}
+
 	public function delete($id)
 	{
 		$select['deal'] = $this->Deal_Model->searchByid($id);
