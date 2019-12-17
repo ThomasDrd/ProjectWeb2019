@@ -1,39 +1,64 @@
 
-<?php include 'template/header.php'?>
-
-<form action="dealCreate" method="post">
-	<div class="form-group">
-		<label for="nom">Nom du deal</label>
-		<input type="text" id="nom" class="form-control" name="nom" required>
-	</div>
-	<div class="form-group">
-		<label for="description">Description</label>
-		<input type="text" class="form-control" id="description" name="description" required>
-	</div>
-	<div class="form-group">
-		<label for="conditions">Conditions</label>
-		<input type="text" class="form-control" id="conditions" name="conditions" required>
-	</div>
-	<div class="form-group">
-		<label for="img">Image</label>
-		<input type="text" class="form-control" id="img" name="image" required>
-	</div>
-	<div class="form-group">
-		<label for="datedeb">Date début</label>
-		<input type="date" class="form-control" id="datedeb" name="datedeb">
-	</div>
-	<div class="form-group">
-		<label for="dateexp">Date expiration</label>
-		<input type="date" class="form-control" id="dateexp" name="dateexp">
-	</div>
-	<div class="form-group">
-		<select type="user" class="form-control" id="user" name="user" hidden>
-			<option ><?php echo $_SESSION['idUser'];?>
-		</select>
-	</div>
-	<button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
 <?php
+include 'template/header.php';
 
-include 'template/footer.php'; ?>
+echo form_open('deal/dealcreate', '', array('user' => $_SESSION['idUser']));
+
+echo '<div class="form-group">';
+
+$input = array(
+	'name' => 'nom',
+	'id' => 'nom',
+	'class' => 'form-control'
+);
+echo form_label('Nom du deal', 'nom');
+echo form_input($input);
+
+$input = array(
+	'name' => 'description',
+	'id' => 'description',
+	'class' => 'form-control'
+);
+echo form_label('Description', 'description');
+echo form_input($input);
+
+$input = array(
+	'name' => 'conditions',
+	'id' => 'conditions',
+	'class' => 'form-control'
+);
+echo form_label('Conditions', 'conditions');
+echo form_input($input);
+
+$input = array(
+	'name' => 'image',
+	'id' => 'img',
+	'class' => 'form-control'
+);
+echo form_label('Image', 'img');
+echo form_input($input);
+
+$input = array(
+	'name' => 'datedeb',
+	'id' => 'datedeb',
+	'class' => 'form-control',
+	'type' => 'date'
+);
+echo form_label('Date début', 'nom');
+echo form_input($input);
+
+$input = array(
+	'name' => 'dateexp',
+	'id' => 'dateexp',
+	'class' => 'form-control',
+	'type' => 'date'
+);
+echo form_label('Date expiration', 'dateexp');
+echo form_input($input);
+
+echo form_submit('submit', 'Submit Deal!', array('class' => 'btn btn-primary'));
+
+echo '</div>';
+
+
+include 'template/footer.php';

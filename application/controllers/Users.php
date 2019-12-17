@@ -53,4 +53,35 @@ class Users extends CI_Controller {
 		$this->load->view('users', $query);
 	}
 
+	public function update($id)
+	{
+		$select['user'] = $this->User_Model->searchByid($id);
+		$this->load->view('updateUser', $select);
+	}
+
+	public function userUpdate($id)
+	{
+		if (!empty($_POST)) {
+			$nom = $_POST['nom'];
+			$pre = $_POST['prenom'];
+			$mail = $_POST['mail'];
+			$pwd = $_POST['password'];
+			$pse = $_POST['pseudo'];
+			$role = $_POST['role'];
+		}
+		$this->User_Model->updateUser($nom, $pre, $mail, $pwd, $pse, $role, $id);
+		header('Location: '.base_url('pages/admin'));
+	}
+
+	public function delete($id)
+	{
+		$select['user'] = $this->User_Model->searchByid($id);
+		$this->load->view('deleteDeal', $select);
+	}
+
+	public function deleteUser($idDeal)
+	{
+		$this->User_Model->deleteDeal($idDeal);
+		header('Location: '.base_url('pages/admin'));
+	}
 }
