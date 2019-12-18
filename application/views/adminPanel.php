@@ -1,6 +1,10 @@
 <?php
 include 'template/header.php';
 
+if (isset($_SESSION['user']))
+{
+	if ($_SESSION['idUser'] == 1  ) {
+
 echo '
 <table class="table table-dark">
 <thead>
@@ -69,5 +73,10 @@ foreach ($user as $us)
 echo '
   </tbody>
 </table>';
+	}
+}
+else{
+	header('Location: '.base_url('pages/index'));
+}
 
 include 'template/footer.php';
