@@ -1,11 +1,9 @@
 <?php
 include 'template/header.php'; ?>
 
-			<h2>BOMBOCLAT</h2>
-
 			<form action="edituser" method="post">
 				<fieldset>
-					<legend>Sco pa tu mana</legend>
+					<legend>Votre compte</legend>
 					<p><label for="name">Pseudo</label><input id="name" type="text" name="name" value="" placeholder="  <?php print_r($user['0']->pseudo); ?> "/></p>
 					<p><label for="pwd">Mail</label><input id="mail" type="text" name="mail" value="" placeholder="  <?php print_r($user['0']->mail); ?> "/></p>
 					<p><label for="pwd">Mot de passe</label><input id="pwd" type="text" name="pwd" value=""/></p>

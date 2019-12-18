@@ -3,11 +3,9 @@ include 'template/header.php';
 
 if (isset($_SESSION['user']))
 {
-	if ($_SESSION['idUser'] == 1  ) {
 		echo'
-						<a type="button" class="btn btn-primary" href="' . base_url('deal/create') . '">Creer un deal</a>
-						';
-	}
+				<a type="button" class="btn btn-dark btn-add" href="' . base_url('deal/create') . '">Ajouter un deal</a>
+			';
 }
 
 echo '<div class="row">';

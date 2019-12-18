@@ -30,10 +30,9 @@ class Users extends CI_Controller {
 			}
 		session_write_close();
 		if(isset($_SESSION['user'])){
-			//header('Location: /ProjectWeb2019/pages/users.php');
 			$this->compte();
+			header('Location: '.base_url('pages/index'));
 		}else{
-			//header('Location: /ProjectWeb2019/index.php'); 
 			header('Location: '.base_url('pages/index'));
 		}
 		
@@ -45,8 +44,9 @@ class Users extends CI_Controller {
 		session_destroy();
 		header('Location: '.base_url('pages/index'));
 	}
+
 		public function compte()
-	{	
+	{
 		session_start();
 		$query['user'] = $this->User_Model->userInfo($_SESSION['idUser']);
 		session_write_close();
