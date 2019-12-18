@@ -31,7 +31,7 @@ class Pages extends CI_Controller {
 	public function index()
 	{
 		$this->load->database();
-		$select['deal'] = $this->Deal_Model->searchDeal();
+		$select['deal'] = $this->Deal_Model->searchDealPosted();
 		$this->load->view('index', $select);
 	}
 

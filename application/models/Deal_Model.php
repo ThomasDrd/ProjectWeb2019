@@ -9,6 +9,12 @@ class Deal_Model extends CI_Model
 		return  $this->db->query('SELECT * FROM deals WHERE deal_id = '.$id)->result();
 	}
 
+	public function searchDealPosted()
+	{
+		return  $this->db->query('SELECT * FROM deals WHERE posted')->result();
+	}
+
+
 	public function searchDeal()
 	{
 		return  $this->db->query('SELECT * FROM deals')->result();
@@ -30,5 +36,15 @@ class Deal_Model extends CI_Model
 	public function deleteDeal($id)
 	{
 		$this->db->query('DELETE FROM deals WHERE deal_id = '.$id);
+	}
+
+	public function enableDeal($id)
+	{
+		$this->db->query('UPDATE deals SET posted = 1 WHERE deal_id='.$id);
+	}
+
+	public function disableDeal($id)
+	{
+		$this->db->query('UPDATE deals SET posted = 0 WHERE deal_id='.$id);
 	}
 }

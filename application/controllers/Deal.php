@@ -111,4 +111,17 @@ class Deal extends CI_Controller
 		$this->Deal_Model->deleteDeal($idDeal);
 		header('Location: '.base_url('pages/admin'));
 	}
+
+
+	public function enable($id)
+	{
+		$this->Deal_Model->enableDeal($id);
+		header('Location: '.base_url('pages/admin'));
+	}
+
+	public function disable($id)
+	{
+		$this->Deal_Model->disableDeal($id);
+		header('Location: '.base_url('pages/admin'));
+	}
 }
