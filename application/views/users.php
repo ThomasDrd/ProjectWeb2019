@@ -1,19 +1,49 @@
 <?php
-include 'template/header.php'; ?>
+include 'template/header.php';
 
-			<form action="edituser" method="post">
-				<fieldset>
-					<legend>Votre compte</legend>
-					<p><label for="name">Pseudo</label><input id="name" type="text" name="name" value="" placeholder="  <?php print_r($user['0']->pseudo); ?> "/></p>
-					<p><label for="pwd">Mail</label><input id="mail" type="text" name="mail" value="" placeholder="  <?php print_r($user['0']->mail); ?> "/></p>
-					<p><label for="pwd">Mot de passe</label><input id="pwd" type="text" name="pwd" value=""/></p>
-					<p><label for="pwd">Mot de passe confirmation</label><input id="pwdconf" type="text" name="pwdconf" value=""/></p>
-					<p><input type="submit" name="search"/></p>
-				</fieldset> 
-			</form>
+echo form_open('users/edituser');
+
+echo '<div class="form-group">';
+
+	$input = array(
+	'name' => 'name',
+	'id' => 'name',
+	'class' => 'form-control',
+	'value' => 'Recup des info user recup en bd'
+	);
+	echo form_label('Votre Pseudo', 'name');
+	echo form_input($input);
+
+	$input = array(
+	'name' => 'mail',
+	'id' => 'mail',
+	'class' => 'form-control',
+	'type' => 'mail'
+		);
+	echo form_label('Votre mail', 'pwd');
+	echo form_input($input);
+
+	$input = array(
+		'name' => 'pwd',
+		'id' => 'pwd',
+		'class' => 'form-control',
+		'type' => 'password'
+	);
+	echo form_label('Mot de passe', 'pwd');
+	echo form_input($input);
 
 
-	        
-<?php
+	$input = array(
+		'name' => 'pwdconf',
+		'id' => 'pwdconf',
+		'class' => 'form-control',
+		'type' => 'password'
+	);
+
+	echo form_label('Confirmation mot de passe', 'pwdconf');
+	echo form_input($input);
+
+	echo form_submit('submit', 'Se connecter', array('class' => 'btn btn-dark btn-connect'));
+
+
 include  'template/footer.php';
-?>
