@@ -8,6 +8,9 @@ class Users extends CI_Controller {
 		parent::__construct();
 		$this->load->database();
 		$this->load->model('User_Model');
+
+		$this->load->helper(array('form', 'url'));
+		$this->load->library('form_validation');
 	}
 
 	 	public function login()
@@ -17,24 +20,31 @@ class Users extends CI_Controller {
 
     	public function loguser()
     {
-    	session_start();
-		$name = (isset($_POST['name'])) ? $_POST['name'] 	: "";
-		$pwd  = (!empty($_POST['pwd'])) ? $_POST['pwd'] 	: "";
-		$this->load->database();
-		$query = $this->User_Model->search();
+		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('pwd', 'Pwd', 'required');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->load->view('login');
+		}
+
+		else{
+			session_start();
+			$name = (isset($_POST['name'])) ? $_POST['name'] 	: "";
+			$pwd  = (!empty($_POST['pwd'])) ? $_POST['pwd'] 	: "";
+			$this->load->database();
+			$query = $this->User_Model->search();
 			foreach($query as $row) {
 				if($row->pseudo == $name AND $pwd == $row->password){	//password_verify($pwd, $row->user_pwd)) {
-					    $_SESSION['user'] = $row->pseudo;
-					    $_SESSION['idUser'] = $row->user_id;
-				} 
+					$_SESSION['user'] = $row->pseudo;
+					$_SESSION['idUser'] = $row->user_id;
+				}
 			}
-		session_write_close();
-		if(isset($_SESSION['user'])){
+			session_write_close();
 			$this->compte();
 			header('Location: '.base_url('pages/index'));
-		}else{
-			header('Location: '.base_url('pages/index'));
 		}
+
 		
     }
     	public function logout()
