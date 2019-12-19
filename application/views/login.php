@@ -23,7 +23,7 @@ echo '<div class="form-group">';
 	echo form_input($input);
 
 
-	echo form_submit('submit', 'Se connecter', array('class' => 'btn btn-primary'));
+	echo form_submit('submit', 'Se connecter', array('class' => 'btn btn-dark btn-connect'));
 
 	echo '</div>';
 
