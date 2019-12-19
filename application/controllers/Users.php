@@ -65,7 +65,7 @@ class Users extends CI_Controller {
 
 	public function update($id)
 	{
-		$select['user'] = $this->User_Model->searchByid($id);
+		$select['user'] = $this->User_Model->userInfo($id);
 		$this->load->view('updateUser', $select);
 	}
 
@@ -85,13 +85,13 @@ class Users extends CI_Controller {
 
 	public function delete($id)
 	{
-		$select['user'] = $this->User_Model->searchByid($id);
-		$this->load->view('deleteDeal', $select);
+		$select['user'] = $this->User_Model->userInfo($id);
+		$this->load->view('deleteUser', $select);
 	}
 
-	public function deleteUser($idDeal)
+	public function deleteUser($id)
 	{
-		$this->User_Model->deleteDeal($idDeal);
+		$this->User_Model->delete($id);
 		header('Location: '.base_url('pages/admin'));
 	}
 }

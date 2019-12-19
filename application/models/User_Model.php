@@ -9,11 +9,6 @@ class User_Model extends CI_Model
 		return  $this->db->query('SELECT * FROM users')->result();
 	}
 
-	public function searchByid($id)
-	{
-		return  $this->db->query('SELECT * FROM users WHERE user_id = '.$id)->result();
-	}
-
 	public function userInfo($user)
 	{
 		return 	$this->db->query('SELECT * FROM users WHERE user_id = '. $user)->result();
@@ -28,7 +23,7 @@ class User_Model extends CI_Model
 
 	public function delete($user)
 	{
-		return 	$this->db->query('DELETE FROM users WHERE user_id = '.$user)->result();
+		return 	$this->db->query('DELETE FROM users WHERE user_id = '.$user);
 	}
 
 }

@@ -9,7 +9,7 @@ echo '<div class="form-group">';
 	'name' => 'name',
 	'id' => 'name',
 	'class' => 'form-control',
-	'value' => 'Recup des info user recup en bd'
+	'value' => $user[0]->pseudo
 	);
 	echo form_label('Votre Pseudo', 'name');
 	echo form_input($input);
@@ -18,7 +18,8 @@ echo '<div class="form-group">';
 	'name' => 'mail',
 	'id' => 'mail',
 	'class' => 'form-control',
-	'type' => 'mail'
+	'type' => 'mail',
+	'value' => $user[0]->mail
 		);
 	echo form_label('Votre mail', 'pwd');
 	echo form_input($input);
