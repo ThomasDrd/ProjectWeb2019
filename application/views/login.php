@@ -10,7 +10,7 @@ echo '<div class="form-group">';
 	'id' => 'name',
 	'class' => 'form-control'
 	);
-	echo form_label('Nom', 'name');
+	echo form_label('Pseudo', 'name');
 	echo form_input($input);
 
 	$input = array(

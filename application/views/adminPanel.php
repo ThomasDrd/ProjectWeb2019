@@ -3,7 +3,7 @@ include 'template/header.php';
 
 if (isset($_SESSION['user']))
 {
-	if ($_SESSION['idUser'] == 1  ) {
+	if ($_SESSION['role'] == 1  ) {
 
 echo '
 <table class="table table-dark">
@@ -35,7 +35,8 @@ echo '
     <tr>
       <th style="width: 10%" scope="col-1">#</th>
       <th style="width: 10%" scope="col">Nom</th>
-      <th style="width: 50%" scope="col">Prenom</th>
+      <th style="width: 10%" scope="col">Prenom</th>
+      <th style="width: 40%" scope="col">Role</th>
       <th style="width: 30%" scope="col">Action</th>
     </tr>
   </thead>

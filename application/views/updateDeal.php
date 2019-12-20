@@ -64,7 +64,7 @@ $input = array(
 echo form_label('Date expiration', 'dateexp');
 echo form_input($input);
 
-echo form_submit('submit', 'Submit Deal!', array('class' => 'btn btn-primary'));
+echo form_submit('submit', 'Submit Deal!', array('class' => 'btn btn-dark btn-add'));
 
 echo '</div>';
 

@@ -66,7 +66,7 @@ class Deal extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('updateDeal/'. $id);
+			header('Location: '.base_url('deal/update/'.$id));
 		}
 
 		else

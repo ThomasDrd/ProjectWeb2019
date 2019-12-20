@@ -31,19 +31,11 @@
 	</button>
 
 	<div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!--<form class="form-inline ml-auto">
-            <div class="form-group has-white">
-                <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-white btn-raised btn-fab btn-round">
-                <i class="material-icons">search</i>
-            </button>
-        </form>-->
 		<ul class="navbar-nav ml-auto">
 			<?php
 			if (isset($_SESSION['user']))
 			{
-				if ($_SESSION['idUser'] == 1  ) {
+				if ($_SESSION['role'] == 1  ) {
 					echo'
 						<li class="nav-item">
 						<a class="nav-link" href="'.base_url('pages/admin').'">Panel Admin</a>
@@ -52,9 +44,12 @@
 				}
 			}
 			if(!isset($_SESSION['user'])){
-				print_r('<li class="nav-item">
+				echo'<li class="nav-item">
 						<a class="nav-link" href="'.base_url('users/login').'">Log In</a>
-					   </li>');
+					   </li>';
+				echo'<li class="nav-item">
+						<a class="nav-link" href="'.base_url('users/create').'">Create account</a>
+					   </li>';
 			} ?>
 			<?php if(isset($_SESSION['user'])){
 				echo ('<li class="nav-item">

@@ -38,6 +38,7 @@ class Users extends CI_Controller {
 				if($row->pseudo == $name AND $pwd == $row->password){	//password_verify($pwd, $row->user_pwd)) {
 					$_SESSION['user'] = $row->pseudo;
 					$_SESSION['idUser'] = $row->user_id;
+					$_SESSION['role'] = $row->role_id;
 				}
 			}
 			session_write_close();
@@ -69,18 +70,33 @@ class Users extends CI_Controller {
 		$this->load->view('updateUser', $select);
 	}
 
+	public function updateRole($id)
+	{
+		$select['user'] = $this->User_Model->userInfo($id);
+		$this->load->view('updateRole', $select);
+	}
+
 	public function userUpdate($id)
 	{
-		if (!empty($_POST)) {
-			$nom = $_POST['nom'];
-			$pre = $_POST['prenom'];
-			$mail = $_POST['mail'];
-			$pwd = $_POST['password'];
-			$pse = $_POST['pseudo'];
-			$role = $_POST['role'];
+		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required');
+		$this->form_validation->set_rules('mail', 'mail', 'required');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			header('Location: '.base_url('users/compte'));
 		}
-		$this->User_Model->updateUser($nom, $pre, $mail, $pwd, $pse, $role, $id);
-		header('Location: '.base_url('pages/admin'));
+
+		else{
+			$pseudo = $_POST['pseudo'];
+			$mail = $_POST['mail'];
+
+			$this->User_Model->update($pseudo, $mail, $id);
+			session_write_close();
+			session_start();
+			$_SESSION['user'] = $_POST['pseudo'];
+			header('Location: '.base_url('pages/index'));
+		}
+
 	}
 
 	public function delete($id)
@@ -93,5 +109,36 @@ class Users extends CI_Controller {
 	{
 		$this->User_Model->delete($id);
 		header('Location: '.base_url('pages/admin'));
+	}
+
+	public function create()
+	{
+		$this->load->view('createUser');
+	}
+
+	public function userCreate()
+	{
+		$this->form_validation->set_rules('nom', 'Nom', 'required');
+		$this->form_validation->set_rules('prenom', 'Prenom', 'required');
+		$this->form_validation->set_rules('mail', 'Mail', 'required|valid_email');
+		$this->form_validation->set_rules('pwd', 'Pwd', 'required');
+		$this->form_validation->set_rules('pwdC', 'pwd conf', 'required|matches[pwd]');
+		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required|is_unique[users.pseudo]');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			header('Location: '.base_url('users/create'));
+		}
+
+		else{
+
+			$pseu = $_POST['pseudo'];
+			$nom = $_POST['nom'];
+			$prenom = $_POST['prenom'];
+			$mail = $_POST['mail'];
+			$pwd = $_POST['pwd'];
+			$this->User_Model->createUser($nom, $prenom, $mail, $pwd, $pseu);
+			header('Location: '.base_url('users/login'));
+		}
 	}
 }
