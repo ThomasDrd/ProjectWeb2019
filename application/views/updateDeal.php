@@ -42,24 +42,24 @@ $input = array(
 echo form_label('Image', 'img');
 echo form_input($input);
 
+$dateDebutDeal = new DateTime($deal[0]->date_deb);
 $input = array(
 	'name' => 'datedeb',
 	'id' => 'datedeb',
 	'class' => 'form-control',
 	'type' => 'date',
-	'value' => date($deal[0]->date_deb)
+	'value' => $dateDebutDeal->format('Y-m-d')
 );
 echo form_label('Date début', 'nom');
 echo form_input($input);
 
-
-echo 'AFFICHER LES DATES ENREGISTRÉE';
+$dateExpDeal = new DateTime($deal[0]->date_exp);
 $input = array(
 	'name' => 'dateexp',
 	'id' => 'dateexp',
 	'class' => 'form-control',
 	'type' => 'date',
-	'value' =>''
+	'value' => $dateExpDeal->format('Y-m-d')
 );
 echo form_label('Date expiration', 'dateexp');
 echo form_input($input);
