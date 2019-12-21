@@ -64,22 +64,20 @@ class Users extends CI_Controller {
 		$this->load->view('users', $query);
 	}
 
-	public function update($id)
-	{
-		$select['user'] = $this->User_Model->userInfo($id);
-		$this->load->view('updateUser', $select);
-	}
-
 	public function updateRole($id)
 	{
-		$select['user'] = $this->User_Model->userInfo($id);
+		$select['roles'] = $this->User_Model->role();
 		$this->load->view('updateRole', $select);
 	}
 
 	public function userUpdate($id)
 	{
 		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required');
+		$this->form_validation->set_rules('nom', 'Nom', 'required');
+		$this->form_validation->set_rules('prenom', 'Prenom', 'required');
 		$this->form_validation->set_rules('mail', 'mail', 'required');
+		$this->form_validation->set_rules('pwd', 'Pwd', 'required');
+		$this->form_validation->set_rules('pwdconf', 'pwd conf', 'required|matches[pwd]');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -88,9 +86,12 @@ class Users extends CI_Controller {
 
 		else{
 			$pseudo = $_POST['pseudo'];
+			$nom = $_POST['nom'];
+			$prenom = $_POST['prenom'];
 			$mail = $_POST['mail'];
+			$pwd = $_POST['pwd'];
 
-			$this->User_Model->update($pseudo, $mail, $id);
+			$this->User_Model->update($pseudo, $nom, $prenom, $mail, $pwd, $id);
 			session_write_close();
 			session_start();
 			$_SESSION['user'] = $_POST['pseudo'];
