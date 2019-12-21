@@ -25,7 +25,6 @@ class Deal extends CI_Controller
 		$this->form_validation->set_rules('nom', 'Nom', 'required');
 		$this->form_validation->set_rules('description', 'Description', 'required');
 		$this->form_validation->set_rules('conditions', 'Conditions', 'required');
-		$this->form_validation->set_rules('image', 'Images', 'required');
 		$this->form_validation->set_rules('user', 'User', 'required');
 
 		if ($this->form_validation->run() == FALSE)
@@ -46,7 +45,7 @@ class Deal extends CI_Controller
 
 
 			$this->Deal_Model->addDeal($nom, $des, $cond, $usr, $img, $daexp, $dadeb);
-			header('Location: '.base_url('pages/admin'));
+			header('Location: '.base_url('pages/index'));
 		}
 	}
 
@@ -61,7 +60,6 @@ class Deal extends CI_Controller
 		$this->form_validation->set_rules('nom', 'Nom', 'required');
 		$this->form_validation->set_rules('description', 'Description', 'required');
 		$this->form_validation->set_rules('conditions', 'Conditions', 'required');
-		$this->form_validation->set_rules('image', 'Images', 'required');
 		$this->form_validation->set_rules('user', 'User', 'required');
 
 		if ($this->form_validation->run() == FALSE)
@@ -76,24 +74,9 @@ class Deal extends CI_Controller
 			$cond = $_POST['conditions'];
 			$img = $_POST['image'];
 			$usr = $_POST['user'];
+			$daexp = $_POST['dateexp'];
+			$dadeb = $_POST['datedeb'];
 
-			if (isset($_POST['dateexp']))
-			{
-				$daexp = $_POST['dateexp'];
-			}
-			else
-			{
-				$daexp = null;
-			}
-
-			if ( isset($_POST['datedeb']))
-			{
-				$dadeb = $_POST['datedeb'];
-			}
-			else
-			{
-				$daexp = null;
-			}
 
 			$this->Deal_Model->updateDeal($nom, $des, $cond, $usr, $img, $daexp, $dadeb, $id);
 			header('Location: '.base_url('pages/admin'));

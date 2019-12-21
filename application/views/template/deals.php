@@ -32,6 +32,14 @@
 																						}
 																					}
 																					print_r($date1); ?></small></p>
+				<?php
+				if (isset($_SESSION['idUser']))
+				{
+					if ($de->user_id == $_SESSION['idUser']){
+						echo '<a class="card-text" href="'.  base_url('deal/update/') .'">Modifier / supprimer le deal</a>';
+					}
+				}
+				?>
 			</div>
 		</div>
 
