@@ -7,6 +7,7 @@ class Pages extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->database();
+		$this->load->helper(array('form', 'url'));
 		$this->load->model('Deal_Model');
 		$this->load->model('User_Model');
    /*     $this->load->model('Comments_Model');*/
@@ -43,5 +44,13 @@ class Pages extends CI_Controller {
 		$this->load->view('adminPanel', $select);
 	}
 
+
+	/*
+	 * Chargement de la page de creation de deal
+	 */
+	public function create()
+	{
+		$this->load->view('createDeal');
+	}
 
 }

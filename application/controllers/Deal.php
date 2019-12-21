@@ -15,13 +15,6 @@ class Deal extends CI_Controller
 
 	########################### Chargement des vues ###########################
 
-	/*
-	 * Chargement de la page de creation de deal
-	 */
-	public function create()
-	{
-		$this->load->view('createDeal');
-	}
 
 	/*
 	 * Chargement de la page de modification d'un deal

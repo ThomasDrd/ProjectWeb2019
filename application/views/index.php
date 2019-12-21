@@ -4,7 +4,7 @@ include 'template/header.php';
 if (isset($_SESSION['user']))
 {
 		echo'
-				<a type="button" class="btn btn-dark btn-add" href="' . base_url('deal/create') . '">Ajouter un deal</a>
+				<a type="button" class="btn btn-dark btn-add" href="' . base_url('pages/create') . '">Ajouter un deal</a>
 			';
 }
 
