@@ -13,11 +13,53 @@ class Users extends CI_Controller {
 		$this->load->library('form_validation');
 	}
 
-	 	public function login()
-	{	
+	########################### Gestion du chargement des vue ###########################
+
+	/*
+	 * Page de login
+	 */
+	public function login()
+	{
 		$this->load->view('login');
 	}
 
+
+	/*
+	 * Page de gestion des roles
+	 */
+	public function updateRole($id)
+	{
+		$select['roles'] = $this->User_Model->role();
+		$this->load->view('updateRole', $select);
+	}
+
+
+	/*
+	 * Information du compte
+	 */
+	public function compte()
+	{
+		session_start();
+		$query['user'] = $this->User_Model->userInfo($_SESSION['idUser']);
+		session_write_close();
+		$this->load->view('users', $query);
+	}
+
+	/*
+	 * Page de suppression d'un utilisateur
+	 */
+	public function delete($id)
+	{
+		$select['user'] = $this->User_Model->userInfo($id);
+		$this->load->view('deleteUser', $select);
+	}
+
+	########################### Gestion de l'ecriture en bd ###########################
+
+
+	/*
+	 * Connexion de l'utilisateur
+	 */
     	public function loguser()
     {
 		$this->form_validation->set_rules('name', 'Name', 'required');
@@ -45,9 +87,11 @@ class Users extends CI_Controller {
 			$this->compte();
 			header('Location: '.base_url('pages/index'));
 		}
-
-		
     }
+
+    /*
+     * Deconnexion de l'utilisateur
+     */
     	public function logout()
 	{	
 		$this->load->helper('url');
@@ -56,20 +100,10 @@ class Users extends CI_Controller {
 		header('Location: '.base_url('pages/index'));
 	}
 
-		public function compte()
-	{
-		session_start();
-		$query['user'] = $this->User_Model->userInfo($_SESSION['idUser']);
-		session_write_close();
-		$this->load->view('users', $query);
-	}
 
-	public function updateRole($id)
-	{
-		$select['roles'] = $this->User_Model->role();
-		$this->load->view('updateRole', $select);
-	}
-
+	/*
+	 * Modification de l'utilisateur
+	 */
 	public function userUpdate($id)
 	{
 		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required');
@@ -100,12 +134,9 @@ class Users extends CI_Controller {
 
 	}
 
-	public function delete($id)
-	{
-		$select['user'] = $this->User_Model->userInfo($id);
-		$this->load->view('deleteUser', $select);
-	}
-
+	/*
+	 * Suppression de l'utilisateur
+	 */
 	public function deleteUser($id)
 	{
 		$this->User_Model->delete($id);
@@ -117,6 +148,9 @@ class Users extends CI_Controller {
 		$this->load->view('createUser');
 	}
 
+	/*
+	 * creation d'un utilisateur
+	 */
 	public function userCreate()
 	{
 		$this->form_validation->set_rules('nom', 'Nom', 'required');

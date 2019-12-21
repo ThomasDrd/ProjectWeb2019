@@ -12,6 +12,9 @@ class Pages extends CI_Controller {
    /*     $this->load->model('Comments_Model');*/
 	}
 
+	/*
+	 * Chargement de la page d'accueil
+	 */
 	public function index()
 	{
 		$this->load->database();
@@ -19,6 +22,9 @@ class Pages extends CI_Controller {
 		$this->load->view('index', $select);
 	}
 
+	/*
+	 * Chargement de la page de details d'un deal
+	 */
 	public function details($id)
 	{
 		$select['deal'] = $this->Deal_Model->searchByid($id);
@@ -26,6 +32,9 @@ class Pages extends CI_Controller {
 
 	}
 
+	/*
+	 * chargement du panel admin
+	 */
 	public function admin()
 	{
 		$this->load->database();

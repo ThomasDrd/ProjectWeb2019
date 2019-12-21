@@ -13,12 +13,41 @@ class Deal extends CI_Controller
 		$this->load->library('form_validation');
 	}
 
+	########################### Chargement des vues ###########################
 
+	/*
+	 * Chargement de la page de creation de deal
+	 */
 	public function create()
 	{
 		$this->load->view('createDeal');
 	}
 
+	/*
+	 * Chargement de la page de modification d'un deal
+	 * Param : $id => id du deal
+	 */
+	public function update($id)
+	{
+		$select['deal'] = $this->Deal_Model->searchByid($id);
+		$this->load->view('updateDeal', $select);
+	}
+
+	/*
+	 * Chargement de la page de suppression de deal
+	 * Param : $id => id du deal
+	 */
+	public function delete($id)
+	{
+		$select['deal'] = $this->Deal_Model->searchByid($id);
+		$this->load->view('deleteDeal', $select);
+	}
+
+	########################### Execution de methodes du model pour ecriture en bd ###########################
+
+	/*
+	 * Execution création d'un deal
+	 */
 	public function dealcreate()
 	{
 
@@ -49,12 +78,11 @@ class Deal extends CI_Controller
 		}
 	}
 
-	public function update($id)
-	{
-		$select['deal'] = $this->Deal_Model->searchByid($id);
-		$this->load->view('updateDeal', $select);
-	}
 
+	/*
+	 * Execution modification d'un deal
+	 * Param : $id => id du deal
+	 */
 	public function dealUpdate($id)
 	{
 		$this->form_validation->set_rules('nom', 'Nom', 'required');
@@ -83,12 +111,11 @@ class Deal extends CI_Controller
 		}
 	}
 
-	public function delete($id)
-	{
-		$select['deal'] = $this->Deal_Model->searchByid($id);
-		$this->load->view('deleteDeal', $select);
-	}
 
+	/*
+	 * Exection suppression d'un deal
+	 * Param : $id => id du deal
+	 */
 	public function deleteDeal($idDeal)
 	{
 		$this->Deal_Model->deleteDeal($idDeal);
@@ -96,12 +123,21 @@ class Deal extends CI_Controller
 	}
 
 
+	/*
+	 * Execution mise en ligne d'un deal (visible des utilisateurs)
+	 * Param : $id => id du deal
+	 */
 	public function enable($id)
 	{
 		$this->Deal_Model->enableDeal($id);
 		header('Location: '.base_url('pages/admin'));
 	}
 
+
+	/*
+	 * Exectuion mise hors ligne du deal
+	 * Param : $id => id du deal
+	 */
 	public function disable($id)
 	{
 		$this->Deal_Model->disableDeal($id);
