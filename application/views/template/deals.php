@@ -3,7 +3,11 @@
 <div class="card mb-3" style="max-width: 540px;">
 	<div class="row no-gutters">
 		<div class="col-md-4">
-			<img src=" <?php echo $de->img; ?> " class="card-img" alt="Image Operateur">
+		<?php 
+			if(isset($de->img) AND $de->img !== ""){
+				echo '<img src="'. $de->img .'" class="card-img">';
+			} 
+		?>
 		</div>
 		<div class="col-md-8">
 			<div class="card-body">
@@ -36,7 +40,7 @@
 				if (isset($_SESSION['idUser']))
 				{
 					if ($de->user_id == $_SESSION['idUser']){
-						echo '<a class="card-text" href="'.  base_url('deal/update/') .'">Modifier / supprimer le deal</a>';
+						echo '<a class="card-text" href="'.  base_url('deal/dealUpdate/') . $de->deal_id .'">Modifier / supprimer le deal</a>';
 					}
 				}
 				?>

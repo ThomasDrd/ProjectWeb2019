@@ -78,6 +78,13 @@ class Pages extends CI_Controller {
 		$select['roles'] = $this->User_Model->role();
 		$this->load->view('adminPanel', $select);
 	}
+	
+	public function modo()
+	{
+		$this->load->database();
+		$select['deal'] = $this->Deal_Model->searchDeal();
+		$this->load->view('modoPanel', $select);
+	}
 
 
 

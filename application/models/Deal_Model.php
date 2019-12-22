@@ -32,6 +32,10 @@ class Deal_Model extends CI_Model
 		WHERE deal_id ='.$id);
 	}
 
+	public function showUsersDeal($id)
+	{
+		return $this->db->query('SELECT * FROM deals WHERE user_id = '. $id)->result();
+	}
 
 	public function deleteDeal($id)
 	{

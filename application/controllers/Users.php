@@ -1,6 +1,9 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+
+
 class Users extends CI_Controller {
 
 	public function __construct()
@@ -8,7 +11,7 @@ class Users extends CI_Controller {
 		parent::__construct();
 		$this->load->database();
 		$this->load->model('User_Model');
-
+		$this->load->model('Deal_Model');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 	}
@@ -128,5 +131,15 @@ class Users extends CI_Controller {
 			$this->User_Model->createUser($nom, $prenom, $mail, $pwd, $pseu);
 			header('Location: '.base_url('pages/login'));
 		}
+	}
+
+	public function myDeals()
+	{
+		session_start();
+		$user = $_SESSION['idUser'];
+		session_write_close();
+		$this->load->database();
+		$select['deal'] = $this->Deal_Model->showUsersDeal($user);
+		$this->load->view('myDeals', $select);
 	}
 }

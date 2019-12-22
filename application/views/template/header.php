@@ -42,25 +42,33 @@
 					   </li>
 						';
 				}
+				if ($_SESSION['role'] == 3) {
+					echo'
+						<li class="nav-item">
+						<a class="nav-link" href="'.base_url('pages/modo').'">Panel Modo</a>
+					   </li>
+						';
+				}
+				echo ('<li class="nav-item">
+							<a class="nav-link" href="'.base_url('users/myDeals').'">Mes deals</a>
+						   </li>');
+				echo ('<li class="nav-item">
+							<a class="nav-link" href="'.base_url('pages/compte').'">Bienvenue '.$_SESSION['user'].'</a>
+						   </li>');
+				echo ('<li class="nav-item">
+							<a class="nav-link" href="'.base_url('users/logout').'">Se déconnecter</a>
+						   </li>');
+
 			}
 			if(!isset($_SESSION['user'])){
-				echo'<li class="nav-item">
-						<a class="nav-link" href="'.base_url('pages/login').'">Log In</a>
-					   </li>';
-				echo'<li class="nav-item">
-						<a class="nav-link" href="'.base_url('pages/createUser').'">Create account</a>
-					   </li>';
-			} ?>
-			<?php if(isset($_SESSION['user'])){
-				echo ('<li class="nav-item">
-						<a class="nav-link" href="'.base_url('pages/compte').'">Welcome '.$_SESSION['user'].'</a>
-					   </li>');
-			} ?>
-			<?php if(isset($_SESSION['user'])){
-				echo ('<li class="nav-item">
-						<a class="nav-link" href="'.base_url('users/logout').'">Se déconnecter</a>
-					   </li>');
-			} ?>
+						echo'<li class="nav-item">
+								<a class="nav-link" href="'.base_url('pages/login').'">Log In</a>
+							   </li>';
+						echo'<li class="nav-item">
+								<a class="nav-link" href="'.base_url('pages/createUser').'">Create account</a>
+							   </li>';
+			} 
+			 ?>
 		</ul>
 	</div>
 </nav>
