@@ -35,16 +35,16 @@ class Deal extends CI_Controller
 		else
 		{
 			$nom = $_POST['nom'];
-			$des = $_POST['description'];
-			$cond = $_POST['conditions'];
-			$img = $_POST['image'];
-			$usr = $_POST['user'];
+			$description = $_POST['description'];
+			$conditions = $_POST['conditions'];
+			$imgage = $_POST['image'];
+			$user = $_POST['user'];
 
-			$daexp = $_POST['dateexp'];
-			$dadeb = $_POST['datedeb'];
+			$dateExpiration = $_POST['dateexp'];
+			$dateDebut = $_POST['datedeb'];
 
 
-			$this->Deal_Model->addDeal($nom, $des, $cond, $usr, $img, $daexp, $dadeb);
+			$this->Deal_Model->addDeal($nom, $description, $conditions, $user, $imgage, $dateExpiration, $dateDebut);
 			header('Location: '.base_url('pages/index'));
 		}
 	}
@@ -69,15 +69,15 @@ class Deal extends CI_Controller
 		else
 		{
 			$nom = $_POST['nom'];
-			$des = $_POST['description'];
-			$cond = $_POST['conditions'];
-			$img = $_POST['image'];
-			$usr = $_POST['user'];
-			$daexp = $_POST['dateexp'];
-			$dadeb = $_POST['datedeb'];
+			$descrition = $_POST['description'];
+			$conditions = $_POST['conditions'];
+			$image = $_POST['image'];
+			$user = $_POST['user'];
+			$dateExpiration = $_POST['dateexp'];
+			$dateDebut = $_POST['datedeb'];
 
 
-			$this->Deal_Model->updateDeal($nom, $des, $cond, $usr, $img, $daexp, $dadeb, $id);
+			$this->Deal_Model->updateDeal($nom, $descrition, $conditions, $user, $image, $dateExpiration, $dateDebut, $id);
 			header('Location: '.base_url('pages/admin'));
 		}
 	}
