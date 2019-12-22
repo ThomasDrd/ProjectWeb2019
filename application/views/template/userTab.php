@@ -1,5 +1,4 @@
 <?php
-
 	echo '
 	<tr>
       <th scope="row">'. $us->user_id .'</th>
@@ -8,9 +7,11 @@
       <td>'. $us->role .'</td>
       <td>';
 	if ($us->role_id != 1) {
-		echo '
-		 <a type="button" class="btn btn-success" href="'.base_url('pages/updateRole/').''.$us->user_id.'">Update Role</a> <a type="button" class="btn btn-danger" href="'.base_url('pages/deleteUser/').''.$us->user_id.'">Supprimer</a></td>
-    	</tr>
-		';
+		echo '<select name="selectRole">';
+				foreach ($roles as $role => $value) {
+					$DefaultValue = $value->role == $us->role ? TRUE : FALSE;
+					echo'<option value="' . $value->role . '"' . set_select('selectRole', $value->role, $DefaultValue) . '>' . $value->role . '</option>';
+				}
+		echo '</select>';
 	}
 

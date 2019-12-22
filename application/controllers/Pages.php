@@ -75,6 +75,7 @@ class Pages extends CI_Controller {
 		$this->load->database();
 		$select['deal'] = $this->Deal_Model->searchDeal();
 		$select['user'] = $this->User_Model->search();
+		$select['roles'] = $this->User_Model->role();
 		$this->load->view('adminPanel', $select);
 	}
 
@@ -91,13 +92,13 @@ class Pages extends CI_Controller {
 
 	/*
 	 * Page de gestion des roles
-	 */
+	 *
 	public function updateRole($id)
 	{
 		$select['roles'] = $this->User_Model->role();
 		$this->load->view('updateRole', $select);
 	}
-
+	 */
 
 	/*
 	 * Information du compte
