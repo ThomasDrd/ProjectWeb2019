@@ -2,7 +2,7 @@
 <?php
 include 'template/header.php';
 
-echo form_open('users/usercreate');
+echo form_open('users/userCreate');
 
 echo '<div class="form-group">';
 

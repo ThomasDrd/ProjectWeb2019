@@ -13,46 +13,6 @@ class Users extends CI_Controller {
 		$this->load->library('form_validation');
 	}
 
-	########################### Gestion du chargement des vue ###########################
-
-	/*
-	 * Page de login
-	 */
-	public function login()
-	{
-		$this->load->view('login');
-	}
-
-
-	/*
-	 * Page de gestion des roles
-	 */
-	public function updateRole($id)
-	{
-		$select['roles'] = $this->User_Model->role();
-		$this->load->view('updateRole', $select);
-	}
-
-
-	/*
-	 * Information du compte
-	 */
-	public function compte()
-	{
-		session_start();
-		$query['user'] = $this->User_Model->userInfo($_SESSION['idUser']);
-		session_write_close();
-		$this->load->view('users', $query);
-	}
-
-	/*
-	 * Page de suppression d'un utilisateur
-	 */
-	public function delete($id)
-	{
-		$select['user'] = $this->User_Model->userInfo($id);
-		$this->load->view('deleteUser', $select);
-	}
 
 	########################### Gestion de l'ecriture en bd ###########################
 
@@ -84,7 +44,6 @@ class Users extends CI_Controller {
 				}
 			}
 			session_write_close();
-			$this->compte();
 			header('Location: '.base_url('pages/index'));
 		}
     }
@@ -142,12 +101,6 @@ class Users extends CI_Controller {
 		$this->User_Model->delete($id);
 		header('Location: '.base_url('pages/admin'));
 	}
-
-	public function create()
-	{
-		$this->load->view('createUser');
-	}
-
 	/*
 	 * creation d'un utilisateur
 	 */
@@ -162,7 +115,7 @@ class Users extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			header('Location: '.base_url('users/create'));
+			header('Location: '.base_url('pages/createUser'));
 		}
 
 		else{
@@ -173,7 +126,7 @@ class Users extends CI_Controller {
 			$mail = $_POST['mail'];
 			$pwd = $_POST['pwd'];
 			$this->User_Model->createUser($nom, $prenom, $mail, $pwd, $pseu);
-			header('Location: '.base_url('users/login'));
+			header('Location: '.base_url('pages/login'));
 		}
 	}
 }

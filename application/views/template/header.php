@@ -45,15 +45,15 @@
 			}
 			if(!isset($_SESSION['user'])){
 				echo'<li class="nav-item">
-						<a class="nav-link" href="'.base_url('users/login').'">Log In</a>
+						<a class="nav-link" href="'.base_url('pages/login').'">Log In</a>
 					   </li>';
 				echo'<li class="nav-item">
-						<a class="nav-link" href="'.base_url('users/create').'">Create account</a>
+						<a class="nav-link" href="'.base_url('pages/createUser').'">Create account</a>
 					   </li>';
 			} ?>
 			<?php if(isset($_SESSION['user'])){
 				echo ('<li class="nav-item">
-						<a class="nav-link" href="'.base_url('users/compte').'">Welcome '.$_SESSION['user'].'</a>
+						<a class="nav-link" href="'.base_url('pages/compte').'">Welcome '.$_SESSION['user'].'</a>
 					   </li>');
 			} ?>
 			<?php if(isset($_SESSION['user'])){

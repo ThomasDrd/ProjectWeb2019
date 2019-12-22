@@ -13,28 +13,6 @@ class Deal extends CI_Controller
 		$this->load->library('form_validation');
 	}
 
-	########################### Chargement des vues ###########################
-
-
-	/*
-	 * Chargement de la page de modification d'un deal
-	 * Param : $id => id du deal
-	 */
-	public function update($id)
-	{
-		$select['deal'] = $this->Deal_Model->searchByid($id);
-		$this->load->view('updateDeal', $select);
-	}
-
-	/*
-	 * Chargement de la page de suppression de deal
-	 * Param : $id => id du deal
-	 */
-	public function delete($id)
-	{
-		$select['deal'] = $this->Deal_Model->searchByid($id);
-		$this->load->view('deleteDeal', $select);
-	}
 
 	########################### Execution de methodes du model pour ecriture en bd ###########################
 
@@ -85,7 +63,7 @@ class Deal extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			header('Location: '.base_url('deal/update/'.$id));
+			header('Location: '.base_url('pages/updateDeal/'.$id));
 		}
 
 		else
@@ -109,7 +87,7 @@ class Deal extends CI_Controller
 	 * Exection suppression d'un deal
 	 * Param : $id => id du deal
 	 */
-	public function deleteDeal($idDeal)
+	public function dealDelete($idDeal)
 	{
 		$this->Deal_Model->deleteDeal($idDeal);
 		header('Location: '.base_url('pages/admin'));
@@ -120,7 +98,7 @@ class Deal extends CI_Controller
 	 * Execution mise en ligne d'un deal (visible des utilisateurs)
 	 * Param : $id => id du deal
 	 */
-	public function enable($id)
+	public function dealEnable($id)
 	{
 		$this->Deal_Model->enableDeal($id);
 		header('Location: '.base_url('pages/admin'));
@@ -131,7 +109,7 @@ class Deal extends CI_Controller
 	 * Exectuion mise hors ligne du deal
 	 * Param : $id => id du deal
 	 */
-	public function disable($id)
+	public function dealDisable($id)
 	{
 		$this->Deal_Model->disableDeal($id);
 		header('Location: '.base_url('pages/admin'));
