@@ -11,7 +11,7 @@ class User_Model extends CI_Model
 
 	public function role()
 	{
-		return $this->db->query('SELECT role from roles')->result();
+		return $this->db->query('SELECT role, role_id from roles')->result();
 	}
 
 	public function userInfo($user)
@@ -33,6 +33,11 @@ class User_Model extends CI_Model
 	public function delete($user)
 	{
 		return 	$this->db->query('DELETE FROM users WHERE user_id = '.$user);
+	}
+
+	public function updateRole($user, $idRole)
+	{
+		return 	$this->db->query('UPDATE users SET role_id = '.$idRole.' WHERE user_id = '.$user);
 	}
 
 }

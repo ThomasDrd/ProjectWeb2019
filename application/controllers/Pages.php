@@ -92,13 +92,14 @@ class Pages extends CI_Controller {
 
 	/*
 	 * Page de gestion des roles
-	 *
+	 */
 	public function updateRole($id)
 	{
-		$select['roles'] = $this->User_Model->role();
-		$this->load->view('updateRole', $select);
+		$role = $_POST['selectRole'];
+		$this->User_Model->updateRole($id, $role);
+		header('Location: '. base_url('pages/admin'));
 	}
-	 */
+	 
 
 	/*
 	 * Information du compte
