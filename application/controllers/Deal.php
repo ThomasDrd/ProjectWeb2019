@@ -69,15 +69,15 @@ class Deal extends CI_Controller
 		else
 		{
 			$nom = $_POST['nom'];
-			$description = $_POST['description'];
-			$conditions = $_POST['conditions'];
-			$image = $_POST['image'];
-			$user = $_POST['user'];
-			$dateExpiration = $_POST['dateexp'];
-			$dateDebut = $_POST['datedeb'];
+			$des = $_POST['description'];
+			$cond = $_POST['conditions'];
+			$img = $_POST['image'];
+			$usr = $_POST['user'];
+			$daexp = $_POST['dateexp'];
+			$dadeb = $_POST['datedeb'];
 
 
-			$this->Deal_Model->updateDeal($nom, $description, $conditions, $user, $image, $dateExpiration, $dateDebut, $id);
+			$this->Deal_Model->updateDeal($nom, $des, $cond, $usr, $img, $daexp, $dadeb, $id);
 			header('Location: '.base_url('pages/admin'));
 		}
 	}
