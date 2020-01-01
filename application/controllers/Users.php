@@ -40,7 +40,7 @@ class Users extends CI_Controller {
 			$this->load->database();
 			$query = $this->User_Model->search();
 			foreach($query as $row) {
-				if($row->pseudo == $name AND $pwd == $row->password){	//password_verify($pwd, $row->user_pwd)) {
+				if($row->pseudo == $name AND password_verify($pwd, $row->user_pwd)){	//$pwd == $row->password
 					$_SESSION['user'] = $row->pseudo;
 					$_SESSION['idUser'] = $row->user_id;
 					$_SESSION['role'] = $row->role_id;
@@ -85,7 +85,7 @@ class Users extends CI_Controller {
 			$nom = $_POST['nom'];
 			$prenom = $_POST['prenom'];
 			$mail = $_POST['mail'];
-			$pwd = $_POST['pwd'];
+			$pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
 
 			$this->User_Model->update($pseudo, $nom, $prenom, $mail, $pwd, $id);
 			session_write_close();
@@ -127,7 +127,7 @@ class Users extends CI_Controller {
 			$nom = $_POST['nom'];
 			$prenom = $_POST['prenom'];
 			$mail = $_POST['mail'];
-			$pwd = $_POST['pwd'];
+			$pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
 			$this->User_Model->createUser($nom, $prenom, $mail, $pwd, $pseu);
 			header('Location: '.base_url('pages/login'));
 		}
