@@ -11,10 +11,11 @@ echo '
     <tr>
       <th style="width: 10%" scope="col">#</th>
       <th style="width: 10%" scope="col">Nom</th>
-      <th style="width: 30%" scope="col">Description</th>
-      <th style="width: 20%" scope="col">Conditions</th>
+      <th style="width: 20%" scope="col">Description</th>
+      <th style="width: 15%" scope="col">Conditions</th>
       <th style="width: 20%" scope="col">Action</th>
-      <th style="width: 10%" scope="col">Status</th>
+      <th style="width: 15%" scope="col">Status</th>
+      <th style="width: 10%" scope="col">Etat</th>
     </tr>
   </thead>
   <tbody>
