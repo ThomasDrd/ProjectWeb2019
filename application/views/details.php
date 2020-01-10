@@ -7,9 +7,6 @@ foreach ($deal as $de)
 <div class="col-sm-6">
 <div class="card mb-3" style="max-width: 540px;">
 	<div class="row no-gutters">
-		<div class="col-md-4">
-			<img src="'.$de->img.'" class="card-img" alt="Image Operateur">
-		</div>
 		<div class="col-md-8">
 			<div class="card-body">
 				<a class="card-title">'.$de->nom.'</a>
