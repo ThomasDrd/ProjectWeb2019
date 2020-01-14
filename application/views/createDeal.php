@@ -31,14 +31,6 @@ echo form_label('Conditions', 'conditions');
 echo form_input($input);
 
 $input = array(
-	'name' => 'image',
-	'id' => 'img',
-	'class' => 'form-control'
-);
-echo form_label('Image', 'img');
-echo form_input($input);
-
-$input = array(
 	'name' => 'datedeb',
 	'id' => 'datedeb',
 	'class' => 'form-control',

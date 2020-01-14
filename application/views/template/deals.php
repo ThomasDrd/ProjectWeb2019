@@ -2,16 +2,9 @@
 <div class="col-sm-6">
 <div class="card mb-3" style="max-width: 540px;">
 	<div class="row no-gutters">
-		<div class="col-md-4">
-		<?php 
-			if(isset($de->img) AND $de->img !== ""){
-				echo '<img src="'. $de->img .'" class="card-img">';
-			} 
-		?>
-		</div>
 		<div class="col-md-8">
 			<div class="card-body">
-				<a class="card-title" href="details/<?php echo $de->deal_id; ?>"><?php echo $de->nom; ?></a>
+				<a class="card-title" href="<?php echo base_url('pages/details/'). $de->deal_id ?>" ><?php echo $de->nom; ?></a>
 				<p class="card-text"><?php echo $de->description; ?></p>
 				<p class="card-text"><small class="text-muted">Ajouté il y à <?php $fuseau  = new DatetimeZone('Europe/Paris');
 																					$dateNow = new Datetime('now', $fuseau);

@@ -30,24 +30,31 @@ class Users extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('login');
+			header('Location: '.base_url('pages/login'));
 		}
 
 		else{
 			session_start();
-			$name = (isset($_POST['name'])) ? $_POST['name'] 	: "";
-			$pwd  = (!empty($_POST['pwd'])) ? $_POST['pwd'] 	: "";
-			$this->load->database();
-			$query = $this->User_Model->search();
-			foreach($query as $row) {
-				if($row->pseudo == $name AND password_verify($pwd, $row->user_pwd)){	//$pwd == $row->password
-					$_SESSION['user'] = $row->pseudo;
-					$_SESSION['idUser'] = $row->user_id;
-					$_SESSION['role'] = $row->role_id;
+			$name = $_POST['name'];
+			$pwd  = $_POST['pwd'];
+			$query = $this->User_Model->searchByName($name);
+			if (sizeof($query) > 0) {
+				if(password_verify($pwd, $query[0]->password)) {
+					$_SESSION['user'] = $query[0]->pseudo;
+					$_SESSION['idUser'] = $query[0]->user_id;
+					$_SESSION['role'] = $query[0]->role_id;
+
+					header('Location: '.base_url('pages/index'));
+				}
+				else{
+					header('Location: '.base_url('pages/login'));
 				}
 			}
+			else{
+				header('Location: '.base_url('pages/login'));
+			}
+
 			session_write_close();
-			header('Location: '.base_url('pages/index'));
 		}
     }
 
@@ -85,7 +92,7 @@ class Users extends CI_Controller {
 			$nom = $_POST['nom'];
 			$prenom = $_POST['prenom'];
 			$mail = $_POST['mail'];
-			$pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
+			$pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
 			$this->User_Model->update($pseudo, $nom, $prenom, $mail, $pwd, $id);
 			session_write_close();
@@ -127,7 +134,7 @@ class Users extends CI_Controller {
 			$nom = $_POST['nom'];
 			$prenom = $_POST['prenom'];
 			$mail = $_POST['mail'];
-			$pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
+			$pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 			$this->User_Model->createUser($nom, $prenom, $mail, $pwd, $pseu);
 			header('Location: '.base_url('pages/login'));
 		}
