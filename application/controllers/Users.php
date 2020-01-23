@@ -40,14 +40,18 @@ class Users extends CI_Controller {
 			$this->load->database();
 			$query = $this->User_Model->search();
 			foreach($query as $row) {
-				if($row->pseudo == $name AND password_verify($pwd, $row->user_pwd)){	//$pwd == $row->password
+				print_r($row->password);
+				if($row->pseudo == $name AND password_verify($pwd, $row->password)){//	$pwd == $row->password){
 					$_SESSION['user'] = $row->pseudo;
 					$_SESSION['idUser'] = $row->user_id;
 					$_SESSION['role'] = $row->role_id;
+					header('Location: '.base_url('pages/index'));
 				}
+				
 			}
+			header('Location: '.base_url('pages/login'));
 			session_write_close();
-			header('Location: '.base_url('pages/index'));
+			
 		}
     }
 
@@ -85,7 +89,7 @@ class Users extends CI_Controller {
 			$nom = $_POST['nom'];
 			$prenom = $_POST['prenom'];
 			$mail = $_POST['mail'];
-			$pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
+			$pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
 			$this->User_Model->update($pseudo, $nom, $prenom, $mail, $pwd, $id);
 			session_write_close();
@@ -127,7 +131,7 @@ class Users extends CI_Controller {
 			$nom = $_POST['nom'];
 			$prenom = $_POST['prenom'];
 			$mail = $_POST['mail'];
-			$pwd = password_hash($_POST['pwd'], PASSWORD_BCRYPT);
+			$pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 			$this->User_Model->createUser($nom, $prenom, $mail, $pwd, $pseu);
 			header('Location: '.base_url('pages/login'));
 		}
