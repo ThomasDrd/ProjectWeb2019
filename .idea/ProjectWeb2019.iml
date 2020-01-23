@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="activity-tracking" />
+    <orderEntry type="module" module-name="activity-tracking-api" />
   </component>
 </module>
