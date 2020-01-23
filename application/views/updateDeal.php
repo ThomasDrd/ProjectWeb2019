@@ -33,15 +33,6 @@ $input = array(
 echo form_label('Conditions', 'conditions');
 echo form_input($input);
 
-$input = array(
-	'name' => 'image',
-	'id' => 'img',
-	'class' => 'form-control',
-	'value' => $deal[0]->img
-);
-echo form_label('Image', 'img');
-echo form_input($input);
-
 $dateDebutDeal = new DateTime($deal[0]->date_deb);
 $input = array(
 	'name' => 'datedeb',
@@ -64,8 +55,9 @@ $input = array(
 echo form_label('Date expiration', 'dateexp');
 echo form_input($input);
 
-echo form_submit('submit', 'Submit Deal!', array('class' => 'btn btn-dark btn-add'));
+echo form_submit('submit', 'Update !', array('class' => 'btn btn-dark btn-add'));
 
+echo '<a type="button" class="btn btn-danger" href="' . base_url('Pages/deleteDeal/') . $deal[0]->deal_id .'">Supprimer</a>';
 echo '</div>';
 
 
