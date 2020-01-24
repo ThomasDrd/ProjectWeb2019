@@ -4,7 +4,6 @@
       <th scope="row">'. $us->user_id .'</th>
       <td>'. $us->nom .'</td>
       <td>'. $us->prenom .'</td>
-      <td>'. $us->role .'</td>
       <td>';
 	if ($us->role_id != 1) {
 
@@ -16,7 +15,10 @@
 					echo'<option value="' . $value->role_id . '"' . set_select('selectRole', $value->role_id, $DefaultValue) . '>' . $value->role . '</option>';
 				}
 		echo '</select>
-		<input type="submit" form="selectRole" class="btn btn-success"> <a type="button" class="btn btn-danger" href="' . base_url('Pages/deleteUser/') . $us->user_id .'">Supprimer</a></form></td>';
+		<input type="submit" form="selectRole" class="btn btn-success" value="Modifier"> 
+		</form></td>';
 	}else{
 		echo 'Administrateur</td>';
 	}
+
+	echo '<td><a type="button" class="btn btn-danger" href="' . base_url('Pages/deleteUser/') . $us->user_id .'">Supprimer</a></td>';
