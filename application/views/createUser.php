@@ -78,7 +78,7 @@ echo form_input($input);
 
 
 $input = array(
-	'name' => 'pwdC',
+	'name' => 'pwdc',
 	'id' => 'pwdc',
 	'class' => 'form-control',
 	'type' => 'password',
@@ -92,6 +92,10 @@ echo form_input($input);
 echo form_submit('submit', 'Create', array('class' => 'btn btn-dark btn-add'));
 
 echo '</div>';
+if(isset($message_display))
+{
+	echo '<h4 class="alert alert-danger text-center" role="alert">' . $message_display . '</h4>';
+}
 
 
 include 'template/footer.php';

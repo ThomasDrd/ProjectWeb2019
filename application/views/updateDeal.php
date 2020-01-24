@@ -1,7 +1,6 @@
 
 <?php
 include 'template/header.php';
-
 echo form_open('deal/dealupdate/'. $deal[0]->deal_id, '', array('user' => $_SESSION['idUser']));
 
 echo '<div class="form-group">';

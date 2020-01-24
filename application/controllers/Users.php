@@ -119,16 +119,19 @@ class Users extends CI_Controller {
 	 */
 	public function userCreate()
 	{
-		$this->form_validation->set_rules('nom', 'Nom', 'required');
-		$this->form_validation->set_rules('prenom', 'Prenom', 'required');
-		$this->form_validation->set_rules('mail', 'Mail', 'required|valid_email');
-		$this->form_validation->set_rules('pwd', 'Pwd', 'required');
-		$this->form_validation->set_rules('pwdC', 'pwd conf', 'required|matches[pwd]');
-		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required|is_unique[users.pseudo]');
+		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required',array('required' => 'Veuillez entrer un pseudo'));
+		$this->form_validation->set_rules('nom', 'Nom', 'required',array('required' => 'Veuillez entrer un nom'));
+		$this->form_validation->set_rules('prenom', 'Prenom', 'required',array('required' => 'Veuillez entrer un prenom'));
+		$this->form_validation->set_rules('mail', 'mail', 'required|valid_email|is_unique[users.mail]', array('required' => 'Veuillez entrer un mail', 'valid_email' => 'Veuillez entrer un mail valide', 'is_unique' => 'Ce mail est déjà rattaché à un autre compte'));
+		$this->form_validation->set_rules('pwd', 'Pwd', 'required', array('required' => 'Veuillez entrer un mot de passe'));
+		$this->form_validation->set_rules('pwdc', 'pwd conf', 'required|matches[pwd]', array('required' => 'Les mot de passe ne correspondent pas'));
+		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required', array('required' => 'Veuillez entrer un mot de pseudo'));
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			header('Location: '.base_url('pages/createUser'));
+
+			$data['message_display'] = validation_errors();
+			$this->load->view('createUser', $data);
 		}
 
 		else{
