@@ -28,7 +28,6 @@ $image_properties = array(
 	'rel'   => 'lightbox'
 );
 
-img($image_properties);
 
 $input = array(
 	'name' => 'nom',
