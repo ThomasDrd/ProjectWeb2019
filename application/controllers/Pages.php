@@ -47,16 +47,14 @@ class Pages extends CI_Controller {
 		$select['deal'] = $this->Deal_Model->searchByid($id);
 		$this->load->view('details', $select);
 
-	}
+	}// -----------------------------------  Page copyright - Contact ne marche pas --------------------------------------
 	public function copyright()
 	{
-
 		$this->load->view('copyright');
-
 	}
-	/*
-	 * Chargement de la page de creation de deal
-	 */
+
+	//----------------------------     Chargement de la page de creation de deal ----------------------------------------
+
 	public function createDeal()
 	{
 		$this->load->view('createDeal');
