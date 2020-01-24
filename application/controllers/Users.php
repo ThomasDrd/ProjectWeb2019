@@ -111,6 +111,11 @@ class Users extends CI_Controller {
 	 */
 	public function deleteUser($id)
 	{
+		$deals = $this->Deal_Model->showUsersDeal($id);
+		foreach ($deals as $deal)
+		{
+			$this->Deal_Model->deleteDeal($deal->deal_id);
+		}
 		$this->User_Model->delete($id);
 		header('Location: '.base_url('pages/admin'));
 	}
