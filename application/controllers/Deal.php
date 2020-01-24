@@ -11,6 +11,7 @@ class Deal extends CI_Controller
 		$this->load->model('Deal_Model');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
+		$this->load->model('Comments_Model');
 	}
 
 
@@ -98,7 +99,7 @@ class Deal extends CI_Controller
 	public function dealEnable($id)
 	{
 		$this->Deal_Model->enableDeal($id);
-		header('Location: '.base_url('pages/admin'));
+		//header('Location: '.base_url('pages/admin'));
 	}
 
 
@@ -110,5 +111,24 @@ class Deal extends CI_Controller
 	{
 		$this->Deal_Model->disableDeal($id);
 		header('Location: '.base_url('pages/admin'));
+	}
+
+	public function addComment()
+	{
+		if(isset($_POST['commentAdd']) AND !empty($_POST['commentAdd'])){
+			$comment = $_POST['commentAdd'];
+			$dealId = $_POST['dealId'];
+			session_start();
+			$user = $_SESSION['idUser'];
+			session_write_close();
+			$this->Comments_Model->addCommentToDeal($comment, $dealId, $user);	
+			header('Location: '.base_url('pages/details/'.$dealId));
+		}
+	}
+
+	public function deleteComment($id)
+	{	
+		$this->Comments_Model->deleteCommentToDeal($id);
+		header('Location: '.base_url('pages/details/'.$_GET['deal']));
 	}
 }

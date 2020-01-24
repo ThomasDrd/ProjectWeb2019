@@ -1,11 +1,9 @@
 <?php
 include 'template/header.php';
 
-foreach ($deal as $de)
-{
+foreach ($deal as $de){
 	echo ('
-<div class="col-sm-6">
-<div class="card mb-3" style="max-width: 540px;">
+<div class="card mb-3">
 	<div class="row no-gutters">
 		<div class="col-md-8">
 			<div class="card-body">
@@ -40,16 +38,42 @@ foreach ($deal as $de)
 		</div>
 	</div>
 </div>
+
+<div class="card mb-3">
+	<div class="card-body">
+	');
+
+	foreach ($comments as $comment){
+		echo '<a type="button" href="'.base_url('deal/deleteComment/').$comment->comment_id.'?deal='.$de->deal_id.'">X</a><strong class="card-title">'.$comment->pseudo.'</strong><small class="text-muted">  le  '. $comment->date .'</small>
+			  <p class="card-text">'.$comment->comment.'</p>
+			  ';
+
+	}
+
+echo '</div>
 </div>
 
+<div class="card mb-3">
+	<div class="card-body">';
 
-		');
-}
-?>
+	$hidden = array('dealId' => $de->deal_id);
+	echo form_open('Deal/addComment', '', $hidden);
+	echo form_label('Votre commentaire :');
+	echo '<div class="form-group">';
 
+	$input = array(
+	'name' => 'commentAdd',
+	'id' => 'commentAdd',
+	'class' => 'form-control',
+	'type' => 'textarea');
+	echo form_textarea($input);
 
+	echo form_submit('submit', 'Envoyer', array('class' => 'btn btn-dark btn-connect'));
 
+echo 	'</div>
+	</div>
+</div>';
 
-<?php
 include  'template/footer.php';
-?>
+}?>
+

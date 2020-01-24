@@ -13,7 +13,7 @@ class Pages extends CI_Controller {
 		$this->load->helper(array('form', 'url'));
 		$this->load->model('Deal_Model');
 		$this->load->model('User_Model');
-   /*     $this->load->model('Comments_Model');*/
+   		$this->load->model('Comments_Model');
 	}
 
 	/*
@@ -45,6 +45,7 @@ class Pages extends CI_Controller {
 	public function details($id)
 	{
 		$select['deal'] = $this->Deal_Model->searchByid($id);
+		$select['comments'] = $this->Comments_Model->searchByDeal($id);
 		$this->load->view('details', $select);
 
 	}
@@ -140,8 +141,5 @@ class Pages extends CI_Controller {
 	{
 		$this->load->view('createUser');
 	}
-
-
-
 
 }
