@@ -8,7 +8,7 @@
 	if ($us->role_id != 1) {
 
 		echo '
-			<form id="selectRole" method="post" action="'.base_url('Pages/updateRole/'). $us->user_id .'">
+			<form id="selectRole" method="post" action="'.base_url('Users/updateRole/'). $us->user_id .'">
 				<select id="selectRole" name="selectRole">';
 					foreach ($roles as $role => $value) {
 					$DefaultValue = $value->role == $us->role ? TRUE : FALSE;

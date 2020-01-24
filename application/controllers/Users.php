@@ -155,4 +155,15 @@ class Users extends CI_Controller {
 		$select['deal'] = $this->Deal_Model->showUsersDeal($user);
 		$this->load->view('myDeals', $select);
 	}
+
+
+	/*
+	 * Page de gestion des roles
+	 */
+	public function updateRole($id)
+	{
+		$role = $_POST['selectRole'];
+		$this->User_Model->updateRole($id, $role);
+		header('Location: '. base_url('pages/admin'));
+	}
 }
