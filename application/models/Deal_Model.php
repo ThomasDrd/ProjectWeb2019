@@ -17,15 +17,18 @@ class Deal_Model extends CI_Model
 	public function searchDealByResearch($search, $dateS, $dateE)
 	{
 		$where = '';
+		$research = '';
 		if(isset($search) AND !empty($search)){
-			$where .= "description REGEXP '";
+			//$where .= "description REGEXP '";
+			$research .= "'";
 			foreach ($search as $key => $value) {
 				if($key != 0){
-					$where .= '|';
+					$research .= '|';
 				}
-				$where .= $value;
+				$research .= $value;
 			}
-			$where .= "' ";
+			$research .= "' ";
+			$where .= " CONCAT(description, nom, conditions) REGEXP ".$research." ";
 		}
 
 		if(isset($dateS) AND !empty($dateS)){
@@ -45,9 +48,8 @@ class Deal_Model extends CI_Model
 		if(empty($search) AND empty($dateE) AND empty($dateS)){
 			$where = 1;
 		}
-
 		return  $this->db->query('SELECT * FROM deals WHERE posted AND '. $where)->result();
-		
+	
 	}
 
 	public function searchDeal()
