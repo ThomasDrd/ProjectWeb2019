@@ -25,21 +25,22 @@ class Users extends CI_Controller {
 	 */
     	public function loguser()
     {
-		$this->form_validation->set_rules('mail', 'Mail', 'required');
+		$this->form_validation->set_rules('mail', 'Mail', 'required|valid_email', array('valid_email' => 'Veuillez entrer un mail valide'));
 		$this->form_validation->set_rules('pwd', 'Pwd', 'required');
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			header('Location: '.base_url('pages/login'));
+			$data['message_display'] = validation_errors();
+			$this->load->view('login', $data);
 		}
 
 		else{
-			session_start();
 			$mail = $_POST['mail'];
 			$pwd  = $_POST['pwd'];
 			$query = $this->User_Model->searchBymail($mail);
 			if (sizeof($query) > 0) {
 				if(password_verify($pwd, $query[0]->password)) {
+					session_start();
 					$_SESSION['user'] = $query[0]->pseudo;
 					$_SESSION['idUser'] = $query[0]->user_id;
 					$_SESSION['role'] = $query[0]->role_id;
@@ -47,11 +48,13 @@ class Users extends CI_Controller {
 					header('Location: '.base_url('pages/index'));
 				}
 				else{
-					header('Location: '.base_url('pages/login'));
+					$data['message_display'] = 'Mauvais mot de passe';
+					$this->load->view('login', $data);
 				}
 			}
 			else{
-				header('Location: '.base_url('pages/login'));
+				$data['message_display'] = 'Aucun utilisateurs pour cet Email';
+				$this->load->view('login', $data);
 			}
 
 			session_write_close();

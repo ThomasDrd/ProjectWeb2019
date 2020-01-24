@@ -23,10 +23,14 @@ echo '<div class="form-group">';
 	echo form_label('Mot de passe', 'pwd');
 	echo form_input($input);
 
-
 	echo form_submit('submit', 'Se connecter', array('class' => 'btn btn-dark btn-connect'));
 
 	echo '</div>';
+if(isset($message_display))
+{
+	echo '<h4 class="alert alert-danger text-center" role="alert">' . $message_display . '</h4>';
+}
+
 
 include  'template/footer.php';
 
