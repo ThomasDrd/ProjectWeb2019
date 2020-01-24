@@ -14,7 +14,7 @@ echo '
       <th style="width: 27%" scope="col">Description</th>
       <th style="width: 20%" scope="col">Conditions</th>
       <th style="width: 20%" scope="col">Action</th>
-      <th style="width: 13%" scope="col">Status</th>
+      <th style="width: 10%" scope="col">Status</th>
     </tr>
   </thead>
   <tbody>
