@@ -59,7 +59,6 @@ class Deal extends CI_Controller
 		$this->form_validation->set_rules('nom', 'Nom', 'required');
 		$this->form_validation->set_rules('description', 'Description', 'required');
 		$this->form_validation->set_rules('conditions', 'Conditions', 'required');
-		$this->form_validation->set_rules('user', 'User', 'required');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -71,12 +70,11 @@ class Deal extends CI_Controller
 			$nom = $_POST['nom'];
 			$descrition = $_POST['description'];
 			$conditions = $_POST['conditions'];
-			$user = $_POST['user'];
 			$dateExpiration = $_POST['dateexp'];
 			$dateDebut = $_POST['datedeb'];
 
 
-			$this->Deal_Model->updateDeal($nom, $descrition, $conditions, $user, $dateExpiration, $dateDebut, $id);
+			$this->Deal_Model->updateDeal($nom, $descrition, $conditions, $dateExpiration, $dateDebut, $id);
 			header('Location: '.base_url('pages/admin'));
 		}
 	}

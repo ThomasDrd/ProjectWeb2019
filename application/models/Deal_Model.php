@@ -61,9 +61,9 @@ class Deal_Model extends CI_Model
 		VALUES ("'.$nom.'","'. $des .'", "'.$cond.'", '.$usr.', "'.$ddeb.'", "'.$dexp.'")');
 	}
 
-	public function updateDeal($nom, $des, $cond, $usr ,$ddeb, $dexp, $id)
+	public function updateDeal($nom, $des, $cond ,$ddeb, $dexp, $id)
 	{
-		$this->db->query('UPDATE deals SET nom = "'.$nom.'", description = "'. $des .'", conditions =  "'.$cond.'",user_id = '.$usr.' , date_exp =  "'.$dexp.'", date_deb = "'.$ddeb.'"
+		$this->db->query('UPDATE deals SET nom = "'.$nom.'", description = "'. $des .'", conditions =  "'.$cond.'", date_exp =  "'.$dexp.'", date_deb = "'.$ddeb.'"
 		WHERE deal_id ='.$id);
 	}
 
