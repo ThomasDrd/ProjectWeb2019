@@ -81,9 +81,8 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required');
 		$this->form_validation->set_rules('nom', 'Nom', 'required');
 		$this->form_validation->set_rules('prenom', 'Prenom', 'required');
-		$this->form_validation->set_rules('mail', 'mail', 'required|valid_email|is_unique[users.mail]');
 		$this->form_validation->set_rules('pwd', 'Pwd', 'required');
-		$this->form_validation->set_rules('pwdconf', 'pwd conf', 'required|matches[pwd]');
+		$this->form_validation->set_rules('pwdc', 'pwd conf', 'required|matches[pwd]');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -94,10 +93,9 @@ class Users extends CI_Controller {
 			$pseudo = $_POST['pseudo'];
 			$nom = $_POST['nom'];
 			$prenom = $_POST['prenom'];
-			$mail = $_POST['mail'];
 			$pwd = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
 
-			$this->User_Model->update($pseudo, $nom, $prenom, $mail, $pwd, $id);
+			$this->User_Model->update($pseudo, $nom, $prenom, $pwd, $id);
 			session_write_close();
 			session_start();
 			$_SESSION['user'] = $_POST['pseudo'];

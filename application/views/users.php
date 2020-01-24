@@ -34,15 +34,6 @@ echo '<div class="form-group">';
 	echo form_label('Votre prenom', 'prenom');
 	echo form_input($input);
 
-	$input = array(
-	'name' => 'mail',
-	'id' => 'mail',
-	'class' => 'form-control',
-	'type' => 'mail',
-	'value' => $user[0]->mail
-		);
-	echo form_label('Votre mail', 'pwd');
-	echo form_input($input);
 
 	$input = array(
 		'name' => 'pwd',
@@ -55,13 +46,13 @@ echo '<div class="form-group">';
 
 
 	$input = array(
-		'name' => 'pwdconf',
-		'id' => 'pwdconf',
+		'name' => 'pwdc',
+		'id' => 'pwdc',
 		'class' => 'form-control',
 		'type' => 'password'
 	);
 
-	echo form_label('Confirmation mot de passe', 'pwdconf');
+	echo form_label('Confirmation mot de passe', 'pwdc');
 	echo form_input($input);
 
 	echo form_submit('submit', 'Modifier', array('class' => 'btn btn-dark btn-connect'));
