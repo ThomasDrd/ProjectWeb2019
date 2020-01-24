@@ -48,8 +48,7 @@ echo '<div class="form-group">';
 		'name' => 'pwd',
 		'id' => 'pwd',
 		'class' => 'form-control',
-		'type' => 'password',
-		'value' => $user[0]->password
+		'type' => 'password'
 	);
 	echo form_label('Mot de passe', 'pwd');
 	echo form_input($input);
@@ -59,8 +58,7 @@ echo '<div class="form-group">';
 		'name' => 'pwdconf',
 		'id' => 'pwdconf',
 		'class' => 'form-control',
-		'type' => 'password',
-		'value' => $user[0]->password
+		'type' => 'password'
 	);
 
 	echo form_label('Confirmation mot de passe', 'pwdconf');
