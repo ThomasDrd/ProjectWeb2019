@@ -1,5 +1,5 @@
 <div class="footer bg-dark">
-	<em>&copy; 2020 LES BG</em>
+	<a><em>&copy; 2020 LES BG</em></a>
 </div>
 </div>
 </body>
