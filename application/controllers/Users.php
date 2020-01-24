@@ -25,7 +25,7 @@ class Users extends CI_Controller {
 	 */
     	public function loguser()
     {
-		$this->form_validation->set_rules('name', 'Name', 'required');
+		$this->form_validation->set_rules('mail', 'Mail', 'required');
 		$this->form_validation->set_rules('pwd', 'Pwd', 'required');
 
 		if ($this->form_validation->run() == FALSE)
@@ -35,9 +35,9 @@ class Users extends CI_Controller {
 
 		else{
 			session_start();
-			$name = $_POST['name'];
+			$mail = $_POST['mail'];
 			$pwd  = $_POST['pwd'];
-			$query = $this->User_Model->searchByName($name);
+			$query = $this->User_Model->searchBymail($mail);
 			if (sizeof($query) > 0) {
 				if(password_verify($pwd, $query[0]->password)) {
 					$_SESSION['user'] = $query[0]->pseudo;

@@ -6,11 +6,12 @@ echo form_open('users/loguser');
 echo '<div class="form-group">';
 
 	$input = array(
-	'name' => 'name',
-	'id' => 'name',
-	'class' => 'form-control'
+	'name' => 'mail',
+	'id' => 'mail',
+	'class' => 'form-control',
+	'type' => 'mail'
 	);
-	echo form_label('Pseudo', 'name');
+	echo form_label('Mail', 'mail');
 	echo form_input($input);
 
 	$input = array(

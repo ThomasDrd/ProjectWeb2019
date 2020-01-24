@@ -9,9 +9,9 @@ class User_Model extends CI_Model
 		return  $this->db->query('SELECT u.user_id, u.nom, u.prenom, u.mail, u.password, u.pseudo, u.role_id, r.role FROM users u JOIN roles r WHERE u.role_id LIKE r.role_id ')->result();
 	}
 
-	public function searchByName($name)
+	public function searchBymail($mail)
 	{
-		return  $this->db->query('SELECT u.user_id, u.nom, u.prenom, u.mail, u.password, u.pseudo, u.role_id FROM users u WHERE u.pseudo LIKE "'.$name.'"')->result();
+		return  $this->db->query('SELECT u.user_id, u.nom, u.prenom, u.mail, u.password, u.pseudo, u.role_id FROM users u WHERE u.mail LIKE "'.$mail.'"')->result();
 	}
 
 	public function role()
