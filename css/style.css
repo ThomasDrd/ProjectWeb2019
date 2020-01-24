@@ -47,3 +47,10 @@ textarea.form-control
 {
 	height: 120px;
 }
+
+.copyright
+{
+	color: #343A40;
+	font-size: 20px;
+	text-align: justify;
+}
