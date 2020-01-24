@@ -38,7 +38,7 @@ echo '
       <th style="width: 20%" scope="col">Nom</th>
       <th style="width: 20%" scope="col">Prenom</th>
       <th style="width: 40%" scope="col">Role</th>
-      <th style="width: 10%" scope="col">action</th>
+      <th style="width: 10%" scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
