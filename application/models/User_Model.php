@@ -24,9 +24,9 @@ class User_Model extends CI_Model
 		return 	$this->db->query('SELECT u.user_id, u.nom, u.prenom, u.mail, u.password, u.pseudo, u.role_id, r.role FROM users u JOIN roles r WHERE u.role_id LIKE r.role_id AND u.user_id = '. $user)->result();
 	}
 
-	public function update($pseu, $nom, $prenom, $mail, $pwd, $user)
+	public function update($pseu, $nom, $prenom, $pwd, $user)
 	{
-		$this->db->query('UPDATE users SET  mail =  "'.$mail.'", pseudo = "'.$pseu.'", nom ="'.$nom.'", prenom = "'.$prenom.'", password = "'.$pwd.'"
+		$this->db->query('UPDATE users SET   pseudo = "'.$pseu.'", nom ="'.$nom.'", prenom = "'.$prenom.'", password = "'.$pwd.'"
 		WHERE user_id ='.$user);
 	}
 
