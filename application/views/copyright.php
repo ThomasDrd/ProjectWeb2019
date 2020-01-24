@@ -25,13 +25,13 @@ echo "<h1>Laisser un commentaire</h1>";
 <form>
 <div class="form-group">
 	<label for="ID_email" class="text-left">E-mail </label>
-	<input name="email" required type="email" class="form-control" id="ID_email" placeholder="Enter your email here"
+	<input name="email" required type="email" class="form-control" id="ID_email" placeholder="Entrer votre Email"
 		   value="<?= set_value('email'); ?>">
 </div>
 
 <div class="form-group">
 	<label for="ID_email" class="text-left">Title</label>
-	<input name="title" required type="text" class="form-control" id="ID_email" placeholder="Message title"
+	<input name="title" required type="text" class="form-control" id="ID_email" placeholder="Titre Message"
 		   value="<?= set_value('title'); ?>">
 </div>
 
