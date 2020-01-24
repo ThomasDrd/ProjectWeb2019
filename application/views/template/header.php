@@ -58,8 +58,8 @@
 				echo ('<li class="nav-item">
 							<a class="nav-link" href="'.base_url('users/logout').'">Se déconnecter</a>
 						   </li>');
-
 			}
+
 			if(!isset($_SESSION['user'])){
 						echo'<li class="nav-item">
 								<a class="nav-link" href="'.base_url('pages/login').'">Log In</a>
@@ -73,4 +73,5 @@
 	</div>
 </nav>
 <div class="container">
+
 

@@ -14,6 +14,41 @@ class Deal_Model extends CI_Model
 		return  $this->db->query('SELECT * FROM deals WHERE posted')->result();
 	}
 
+	public function searchDealByResearch($search, $dateS, $dateE)
+	{
+		$where = '';
+		if(isset($search) AND !empty($search)){
+			$where .= "description REGEXP '";
+			foreach ($search as $key => $value) {
+				if($key != 0){
+					$where .= '|';
+				}
+				$where .= $value;
+			}
+			$where .= "' ";
+		}
+
+		if(isset($dateS) AND !empty($dateS)){
+			if(isset($search) AND !empty($search)){
+				$where .= ' AND ';
+			}
+			$where .= "date_ajout >= '". $dateS ."'";
+		}
+
+		if(isset($dateE) AND !empty($dateE)){
+			if( (isset($search) AND !empty($search)) OR (isset($dateS) AND !empty($dateS)) ){
+				$where .= ' AND ';
+			}
+			$where .= "date_ajout <= '". $dateE ."'";
+		}
+
+		if(empty($search) AND empty($dateE) AND empty($dateS)){
+			$where = 1;
+		}
+
+		return  $this->db->query('SELECT * FROM deals WHERE posted AND '. $where)->result();
+		
+	}
 
 	public function searchDeal()
 	{

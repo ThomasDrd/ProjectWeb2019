@@ -10447,7 +10447,8 @@ textarea {
     border: 0; }
 
 .nav .nav-item {
-  position: relative; }
+  position: relative;
+  max-height: 38px; }
 
 .page-header {
   height: 100vh;
