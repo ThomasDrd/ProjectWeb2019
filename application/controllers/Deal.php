@@ -22,14 +22,15 @@ class Deal extends CI_Controller
 	public function dealcreate()
 	{
 
-		$this->form_validation->set_rules('nom', 'Nom', 'required');
-		$this->form_validation->set_rules('description', 'Description', 'required');
-		$this->form_validation->set_rules('conditions', 'Conditions', 'required');
+		$this->form_validation->set_rules('nom', 'Nom', 'required', array('required' => 'Veuillez entrer un nom de deal'));
+		$this->form_validation->set_rules('description', 'Description', 'required', array('required' => 'Veuillez entrer une description'));
+		$this->form_validation->set_rules('conditions', 'Conditions', 'required', array('required' => 'Veuillez entrer des conditions'));
 		$this->form_validation->set_rules('user', 'User', 'required');
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('createDeal');
+			$data['message_display'] = validation_errors();
+			$this->load->view('createDeal', $data);
 		}
 
 		else

@@ -9,25 +9,30 @@ echo '<div class="form-group">';
 $input = array(
 	'name' => 'nom',
 	'id' => 'nom',
-	'class' => 'form-control'
+	'class' => 'form-control',
+	'maxlength' => '100',
+	'size'  => '50',
+	'style' => 'width:50%'
 );
-echo form_label('Nom du deal', 'nom');
+echo form_label('Le nom de votre deal', 'nom');
 echo form_input($input);
 
 $input = array(
 	'name' => 'description',
 	'id' => 'description',
-	'class' => 'form-control'
+	'class' => 'form-control',
+
 );
-echo form_label('Description', 'description');
-echo form_input($input);
+echo form_label('La description de votre deal', 'description');
+echo form_textarea($input);
 
 $input = array(
 	'name' => 'conditions',
 	'id' => 'conditions',
 	'class' => 'form-control'
+
 );
-echo form_label('Conditions', 'conditions');
+echo form_label('Les conditions du deal', 'conditions');
 echo form_input($input);
 
 $input = array(
@@ -45,12 +50,15 @@ $input = array(
 	'class' => 'form-control',
 	'type' => 'date'
 );
-echo form_label('Date expiration', 'dateexp');
+echo form_label('Date de l\'expiration', 'dateexp');
 echo form_input($input);
 
 echo form_submit('submit', 'Submit Deal!', array('class' => 'btn btn-dark btn-add'));
 
 echo '</div>';
-
+if(isset($message_display))
+{
+	echo '<h4 class="alert alert-danger text-center" role="alert">' . $message_display . '</h4>';
+}
 
 include 'template/footer.php';

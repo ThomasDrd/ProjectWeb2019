@@ -50,7 +50,12 @@ class Pages extends CI_Controller {
 		$this->load->view('details', $select);
 
 	}
+	public function copyright()
+	{
 
+		$this->load->view('copyright');
+
+	}
 	/*
 	 * Chargement de la page de creation de deal
 	 */
