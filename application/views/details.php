@@ -44,17 +44,22 @@ foreach ($deal as $de){
 	');
 
 	foreach ($comments as $comment){
-		echo '<a type="button" href="'.base_url('deal/deleteComment/').$comment->comment_id.'?deal='.$de->deal_id.'">X</a><strong class="card-title">'.$comment->pseudo.'</strong><small class="text-muted">  le  '. $comment->date .'</small>
-			  <p class="card-text">'.$comment->comment.'</p>
-			  ';
+		if(isset($_SESSION['role']) AND $_SESSION['role'] == 1){
+			echo '<a type="button" href="'.base_url('deal/deleteComment/').$comment->comment_id.'?deal='.$de->deal_id.'">X</a>';
+		}
+			echo '<strong class="card-title">'.$comment->pseudo.'</strong><small class="text-muted">  le  '. $comment->date .'</small>
+			  <p class="card-text">'.$comment->comment.'</p>';
 
 	}
 
 echo '</div>
-</div>
+</div>';
 
-<div class="card mb-3">
-	<div class="card-body">';
+if(isset($_SESSION['role'])){
+			
+
+	echo'<div class="card mb-3">
+			<div class="card-body">';
 
 	$hidden = array('dealId' => $de->deal_id);
 	echo form_open('Deal/addComment', '', $hidden);
@@ -70,10 +75,12 @@ echo '</div>
 
 	echo form_submit('submit', 'Envoyer', array('class' => 'btn btn-dark btn-connect'));
 
-echo 	'</div>
-	</div>
-</div>';
-
+	echo 	'</div>
+		</div>
+	</div>';
+}
 include  'template/footer.php';
+
+
 }?>
 
