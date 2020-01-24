@@ -37,11 +37,11 @@ foreach ($deal as $de){
 			</div>
 		</div>
 	</div>
-</div>
+</div>');
 
-<div class="card mb-3">
-	<div class="card-body">
-	');
+if(!empty($comments)){
+echo '<div class="card mb-3">
+	<div class="card-body">';
 
 	foreach ($comments as $comment){
 		if(isset($_SESSION['role']) AND $_SESSION['role'] == 1){
@@ -54,7 +54,7 @@ foreach ($deal as $de){
 
 echo '</div>
 </div>';
-
+}
 if(isset($_SESSION['role'])){
 			
 
@@ -79,6 +79,7 @@ if(isset($_SESSION['role'])){
 		</div>
 	</div>';
 }
+ 
 include  'template/footer.php';
 
 
