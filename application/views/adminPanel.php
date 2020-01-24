@@ -14,7 +14,6 @@ echo '
       <th style="width: 20%" scope="col">Description</th>
       <th style="width: 15%" scope="col">Conditions</th>
       <th style="width: 20%" scope="col">Action</th>
-      <th style="width: 15%" scope="col">Status</th>
       <th style="width: 10%" scope="col">Etat</th>
     </tr>
   </thead>
@@ -35,9 +34,9 @@ echo '
 <thead>
     <tr>
       <th style="width: 10%" scope="col-1">#</th>
-      <th style="width: 20%" scope="col">Nom</th>
-      <th style="width: 20%" scope="col">Prenom</th>
-      <th style="width: 40%" scope="col">Role</th>
+      <th style="width: 20%" scope="col">mail</th>
+      <th style="width: 20%" scope="col">pseudo</th>
+      <th style="width: 30%" scope="col">Role</th>
       <th style="width: 10%" scope="col">Action</th>
     </tr>
   </thead>
