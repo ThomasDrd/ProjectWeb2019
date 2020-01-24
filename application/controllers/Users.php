@@ -81,13 +81,13 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required');
 		$this->form_validation->set_rules('nom', 'Nom', 'required');
 		$this->form_validation->set_rules('prenom', 'Prenom', 'required');
-		$this->form_validation->set_rules('mail', 'mail', 'required');
+		$this->form_validation->set_rules('mail', 'mail', 'required|valid_email|is_unique[users.mail]');
 		$this->form_validation->set_rules('pwd', 'Pwd', 'required');
 		$this->form_validation->set_rules('pwdconf', 'pwd conf', 'required|matches[pwd]');
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			header('Location: '.base_url('users/compte'));
+			header('Location: '.base_url('pages/compte/'.$id));
 		}
 
 		else{
