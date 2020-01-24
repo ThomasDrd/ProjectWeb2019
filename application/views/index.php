@@ -16,6 +16,9 @@ echo '<div class="form-group">'.form_input($research).'</div>';
 		'name' => 'dateStart',
 		'class' => 'form-control',
 		'id' => 'dateStart',
+		'maxlength' => '70',
+		'size'  => '70',
+		'style' => 'width:90%',
 		'type' => 'date');
 echo '<div class="form-group">'.form_input($dateStart).'</div>';
 
@@ -23,6 +26,9 @@ echo '<div class="form-group">'.form_input($dateStart).'</div>';
 		'name' => 'dateEnd',
 		'class' => 'form-control',
 		'id' => 'dateEnd',
+		'maxlength' => '70',
+		'size'  => '70',
+		'style' => 'width:90%',
 		'type' => 'date');
 
 echo '<div class="form-group">'.form_input($dateEnd).'</div>';

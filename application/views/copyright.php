@@ -31,7 +31,7 @@ echo "<h1>Laisser un commentaire</h1>";
 </div>
 
 <div class="form-group">
-	<label for="ID_email" class="text-left">Title</label>
+	<label for="ID_email" class="text-left">Titre</label>
 	<input name="title" required type="text" class="form-control" id="ID_email" placeholder="Titre Message"
 		   value="<?= set_value('title'); ?>">
 </div>
