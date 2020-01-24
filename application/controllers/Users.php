@@ -25,8 +25,8 @@ class Users extends CI_Controller {
 	 */
     	public function loguser()
     {
-		$this->form_validation->set_rules('mail', 'Mail', 'required|valid_email', array('valid_email' => 'Veuillez entrer un mail valide'));
-		$this->form_validation->set_rules('pwd', 'Pwd', 'required');
+		$this->form_validation->set_rules('mail', 'Mail', 'required|valid_email', array('required' => 'Veuillez entrer un mail', 'valid_email' => 'Veuillez entrer un mail valide'));
+		$this->form_validation->set_rules('pwd', 'Pwd', 'required', array('required' => 'Veuillez entrer un mot passe'));
 
 		if ($this->form_validation->run() == FALSE)
 		{
