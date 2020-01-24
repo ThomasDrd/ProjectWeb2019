@@ -48,7 +48,7 @@ class Pages extends CI_Controller {
 		$select['comments'] = $this->Comments_Model->searchByDeal($id);
 		$this->load->view('details', $select);
 
-	}// -----------------------------------  Page copyright - Contact ne marche pas --------------------------------------
+	}// -----------------------------------  Page copyright - Contact--------------------------------------
 	public function copyright()
 	{
 		$this->load->view('copyright');
@@ -59,6 +59,11 @@ class Pages extends CI_Controller {
 	public function createDeal()
 	{
 		$this->load->view('createDeal');
+	}
+	// -------------------------- Chargement de la page d'accueil ----------------------------
+	public function accueil()
+	{
+		$this->load->view('accueil');
 	}
 
 
