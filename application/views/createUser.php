@@ -96,6 +96,21 @@ if(isset($message_display))
 {
 	echo '<h4 class="alert alert-danger text-center" role="alert">' . $message_display . '</h4>';
 }
+?>
 
-
+<div class="fileinput fileinput-new text-center" data-provides="fileinput">
+	<div class="fileinput-new thumbnail img-circle img-raised">
+		<img src="https://epicattorneymarketing.com/wp-content/uploads/2016/07/Headshot-Placeholder-1.png" alt="...">
+	</div>
+	<div class="fileinput-preview fileinput-exists thumbnail img-circle img-raised"></div>
+	<div>
+    <span class="btn btn-raised btn-round btn-default btn-file">
+        <span class="fileinput-new">Add Photo</span>
+	<span class="fileinput-exists">Change</span>
+	<input type="file" name="..." /></span>
+		<br />
+		<a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+	</div>
+</div>
+<?php
 include 'template/footer.php';
