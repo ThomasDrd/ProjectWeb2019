@@ -2,8 +2,8 @@
 	echo '
 	<tr>
       <th scope="row">'. $us->user_id .'</th>
-      <td>'. $us->nom .'</td>
-      <td>'. $us->prenom .'</td>
+      <td>'. $us->mail .'</td>
+      <td>'. $us->pseudo .'</td>
       <td>';
 	if ($us->role_id != 1) {
 

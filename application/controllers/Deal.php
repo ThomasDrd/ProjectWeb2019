@@ -24,9 +24,6 @@ class Deal extends CI_Controller
 	{
 
 		$this->form_validation->set_rules('nom', 'Nom', 'required', array('required' => 'Veuillez entrer un nom de deal'));
-		$this->form_validation->set_rules('description', 'Description', 'required', array('required' => 'Veuillez entrer une description'));
-		$this->form_validation->set_rules('conditions', 'Conditions', 'required', array('required' => 'Veuillez entrer des conditions'));
-		$this->form_validation->set_rules('user', 'User', 'required');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -57,13 +54,15 @@ class Deal extends CI_Controller
 	 */
 	public function dealUpdate($id)
 	{
-		$this->form_validation->set_rules('nom', 'Nom', 'required');
-		$this->form_validation->set_rules('description', 'Description', 'required');
-		$this->form_validation->set_rules('conditions', 'Conditions', 'required');
+		$this->form_validation->set_rules('nom', 'Nom', 'required', array('required' => 'Veuillez entrer un nom de deal'));
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			header('Location: '.base_url('pages/updateDeal/'.$id));
+			$data['message_display'] = validation_errors();
+			$data = array(
+				'deal' => $this->Deal_Model->searchByid($id),
+				'message_display' => validation_errors() );
+			$this->load->view('updateDeal', $data);
 		}
 
 		else
@@ -82,7 +81,7 @@ class Deal extends CI_Controller
 
 
 	/*
-	 * Exection suppression d'un deal
+	 * Execution suppression d'un deal
 	 * Param : $id => id du deal
 	 */
 	public function dealDelete($idDeal)

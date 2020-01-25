@@ -8,10 +8,13 @@ echo '
 	<td>'. $de->conditions .'</td>
 	<td><a type="button" class="btn btn-warning" href="'.base_url('pages/updateDeal/').''.$de->deal_id.'">Modifier</a> <a type="button" class="btn btn-danger" href="'.base_url('pages/deleteDeal/').''.$de->deal_id.'">Supprimer</a></td>
 	';
-	if($de->posted){
-		echo '<td><a type="button" class="btn btn-success" href="'.base_url('deal/dealDisable/').''.$de->deal_id.'">En ligne</a> </td>';
-	}else{
-		echo '<td><a type="button" class="btn btn-primary" href="'.base_url('deal/dealEnable/').''.$de->deal_id.'">À Poster</a> </td>';
+	if ($_SESSION['role'] == 3  )
+	{
+		if($de->posted){
+			echo '<td><a type="button" class="btn btn-success" href="'.base_url('deal/dealDisable/').''.$de->deal_id.'">En ligne</a> </td>';
+		}else{
+			echo '<td><a type="button" class="btn btn-primary" href="'.base_url('deal/dealEnable/').''.$de->deal_id.'">À Poster</a> </td>';
+		}
 	}
 
 	$fuseau  = new DatetimeZone('Europe/Paris');

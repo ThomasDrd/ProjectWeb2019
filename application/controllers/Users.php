@@ -12,6 +12,7 @@ class Users extends CI_Controller {
 		$this->load->database();
 		$this->load->model('User_Model');
 		$this->load->model('Deal_Model');
+		$this->load->model('Comments_Model');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 	}
@@ -86,7 +87,13 @@ class Users extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			header('Location: '.base_url('pages/compte/'.$id));
+			session_start();
+			$data = array(
+				'user' => $this->User_Model->userInfo($_SESSION['idUser']),
+				'message_display' => validation_errors()
+			);
+			session_write_close();
+			$this->load->view('users', $data);
 		}
 
 		else{
@@ -110,10 +117,17 @@ class Users extends CI_Controller {
 	public function deleteUser($id)
 	{
 		$deals = $this->Deal_Model->showUsersDeal($id);
+		$coms = $this->Comments_Model->searchByUser($id);
 		foreach ($deals as $deal)
 		{
 			$this->Deal_Model->deleteDeal($deal->deal_id);
 		}
+
+		foreach ($coms as $com)
+		{
+			$this->Comments_Model->deleteCommentToDeal($com->comment_id);
+		}
+
 		$this->User_Model->delete($id);
 		header('Location: '.base_url('pages/admin'));
 	}

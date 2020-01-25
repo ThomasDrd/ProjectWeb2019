@@ -27,3 +27,30 @@ h4 > p
 {
 	margin: 0;
 }
+
+.card
+{
+	background-color: #343A40;
+	color: white;
+	width: 100%;
+	max-width: 100% !important;
+	height: 250px;
+}
+
+.card-title
+{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+textarea.form-control
+{
+	height: 120px;
+}
+
+.copyright
+{
+	color: #343A40;
+	font-size: 20px;
+	text-align: justify;
+}
