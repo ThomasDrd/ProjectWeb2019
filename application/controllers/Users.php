@@ -22,7 +22,7 @@ class Users extends CI_Controller {
 
 
 	/*
-	 * Connexion de l'utilisateur
+	 * Connexion de l'utilisateur, vérifie le mot de passe pour l'addresse mail donnée. Redirection sur l'index en cas de réussite, sinon retour à la page login avec les erreurs en questions.
 	 */
     	public function loguser()
     {
@@ -63,7 +63,7 @@ class Users extends CI_Controller {
     }
 
     /*
-     * Deconnexion de l'utilisateur
+     * Deconnexion de l'utilisateur, suppression des variables sessions et redirection à l'index
      */
     	public function logout()
 	{	
@@ -75,7 +75,7 @@ class Users extends CI_Controller {
 
 
 	/*
-	 * Modification de l'utilisateur
+	 * Modification de l'utilisateur vérification du respect de règles des champs. Si erreur, renvoie sur la page de l'utilisateur, sinon, les champs sont mis à jour avec une redirection à l'index.
 	 */
 	public function userUpdate($id)
 	{
@@ -112,7 +112,7 @@ class Users extends CI_Controller {
 	}
 
 	/*
-	 * Suppression de l'utilisateur
+	 * Suppression de l'utilisateur, délétion de tout ses commentaires, ainsi que tout ses deal, puis de l'utilisateur.
 	 */
 	public function deleteUser($id)
 	{
@@ -131,8 +131,9 @@ class Users extends CI_Controller {
 		$this->User_Model->delete($id);
 		header('Location: '.base_url('pages/admin'));
 	}
+
 	/*
-	 * creation d'un utilisateur
+	 * creation d'un utilisateur, si tout les champs requis sont validés, alors l'utilisateur est crée, si il y a une erreur, redirection sur la page de création avec les erreurs en question.
 	 */
 	public function userCreate()
 	{
@@ -162,6 +163,9 @@ class Users extends CI_Controller {
 			header('Location: '.base_url('pages/login'));
 		}
 	}
+	/*
+	 *  Fonction qui permet de renvoyer tout les deals crées par un utilisateur.
+	 */
 
 	public function myDeals()
 	{
@@ -175,7 +179,7 @@ class Users extends CI_Controller {
 
 
 	/*
-	 * Page de gestion des roles
+	 * Fonction qui permet de update le rôle d'un utilisateur. Le paramètre est l'id de l'utilisateur /!\ A savoir qu'un admin ne peut être rétrogradé que depuis la base de données pour des raisons évidentes de sécurité. 
 	 */
 	public function updateRole($id)
 	{
