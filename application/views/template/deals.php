@@ -1,6 +1,6 @@
 
 
-<div class="card mb-3" style="max-width: 540px;">
+<div class="card m-2">
 			<div class="card-title">
 				<a href="<?php echo base_url('pages/details/'). $de->deal_id ?>" ><?php echo $de->nom; ?></a>
 			</div>
