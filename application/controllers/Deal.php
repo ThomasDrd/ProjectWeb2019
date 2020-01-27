@@ -22,8 +22,9 @@ class Deal extends CI_Controller
 	 */
 	public function dealcreate()
 	{
-
-		$this->form_validation->set_rules('nom', 'Nom', 'required', array('required' => 'Veuillez entrer un nom de deal'));
+		$this->form_validation->set_rules('nom', 'Nom', 'required|max_length[50]', array('required' => 'Veuillez entrer un nom de deal'));
+		$this->form_validation->set_rules('description','Description', 'max_length[255]');
+		$this->form_validation->set_rules('conditions','Conditions', 'max_length[50]');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -54,7 +55,9 @@ class Deal extends CI_Controller
 	 */
 	public function dealUpdate($id)
 	{
-		$this->form_validation->set_rules('nom', 'Nom', 'required', array('required' => 'Veuillez entrer un nom de deal'));
+		$this->form_validation->set_rules('nom', 'Nom', 'required|max_length[50]', array('required' => 'Veuillez entrer un nom de deal'));
+		$this->form_validation->set_rules('description','Description', 'max_length[255]');
+		$this->form_validation->set_rules('conditions','Conditions', 'max_length[50]');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -62,7 +65,8 @@ class Deal extends CI_Controller
 			$data = array(
 				'deal' => $this->Deal_Model->searchByid($id),
 				'message_display' => validation_errors() );
-			$this->load->view('updateDeal', $data);
+
+				$this->load->view('updateDeal', $data);
 		}
 
 		else
@@ -98,9 +102,8 @@ class Deal extends CI_Controller
 	public function dealEnable($id)
 	{
 		$this->Deal_Model->enableDeal($id);
-		//header('Location: '.base_url('pages/admin'));
+		header('Location: '.base_url('pages/modo'));
 	}
-
 
 	/*
 	 * Exectuion mise hors ligne du deal
@@ -109,22 +112,48 @@ class Deal extends CI_Controller
 	public function dealDisable($id)
 	{
 		$this->Deal_Model->disableDeal($id);
-		header('Location: '.base_url('pages/admin'));
+		header('Location: '.base_url('pages/modo'));
 	}
 
-	public function addComment()
+	/*
+	 * Méthode gérant l'ajout de commentaire sur un deal
+	 * Param : $id => id du deal
+	 */
+	public function addComment($id)
 	{
-		if(isset($_POST['commentAdd']) AND !empty($_POST['commentAdd'])){
+
+		$dealId = $_POST['dealId'];
+
+		$this->form_validation->set_rules('commentAdd','CommentAdd', 'required|max_length[255]');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			$data['message_display'] = validation_errors();
+			$data = array(
+				'deal' => $this->Deal_Model->searchByid($id),
+				'comments' => $this->Comments_Model->searchByDeal($id),
+				'message_display' => validation_errors() );
+
+			$this->load->view('details', $data);
+		}
+
+		else
+		{
 			$comment = $_POST['commentAdd'];
 			$dealId = $_POST['dealId'];
 			session_start();
 			$user = $_SESSION['idUser'];
 			session_write_close();
-			$this->Comments_Model->addCommentToDeal($comment, $dealId, $user);	
+			$this->Comments_Model->addCommentToDeal($comment, $dealId, $user);
 			header('Location: '.base_url('pages/details/'.$dealId));
+
 		}
 	}
 
+	/*
+	 * Méthode de suppression d'un commentaire
+	 * Param : $id => id du commentaire
+	 */
 	public function deleteComment($id)
 	{	
 		$this->Comments_Model->deleteCommentToDeal($id);

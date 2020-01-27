@@ -35,6 +35,11 @@ h4 > p
 	width: 48%;
 }
 
+.card.details, .card.comment
+{
+	width: 100%;
+}
+
 .card-title
 {
 	font-size: 30px;

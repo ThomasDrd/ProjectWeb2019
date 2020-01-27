@@ -38,7 +38,7 @@
 				if (isset($_SESSION['idUser']))
 				{
 					if ($de->user_id == $_SESSION['idUser']){
-						echo '<a class="card-text" href="'.  base_url('deal/dealUpdate/') . $de->deal_id .'">Modifier / supprimer le deal</a>';
+						echo '<a class="card-text" href="'.  base_url('deal/dealUpdate/') . $de->deal_id .'"> Modifier/Supprimer</a>';
 					}
 				}
 				?></p>
