@@ -8,11 +8,15 @@ foreach ($deal as $de){
 		
 			<div class="card-body">
 				<a class="card-title">'.$de->nom.'</a>
-				<p class="card-text">'.$de->description.'</p>
-				<p class="card-text"><small class="text-muted">Ajouter il y à ';
+				<p class="card-text">Description :'.$de->description.'</p>
+				<p class="card-text">Conditions : '. $de->conditions .'</p>
+				<p class="card-text">Date de démarrage : '. $de->date_deb .'</p>
+				<p class="card-text">Date de fin : '. $de->date_exp .'</p>
+				<div class="card-footer text-muted">
+				<p class="card-text"><small>Ajouté il y à ';
 						$fuseau  = new DatetimeZone('Europe/Paris');
 						$dateNow = new Datetime('now', $fuseau);
-						$dateOld = new Datetime($de->date_ajout, $fuseau); 
+						$dateOld = new Datetime($de->date_ajout, $fuseau);
 						$date = $dateOld->diff($dateNow);
 						if($date->days == 0){
 							$date1 = $date->format('%hh%i');
@@ -33,7 +37,10 @@ foreach ($deal as $de){
 								$date1 = $date->format('%d jours, %h heures et %i minutes');
 							}
 						}
-	echo $date1.'</small></p>
+						echo $date1.'</small>
+				</p>
+				</div>
+				
 		</div>
 	</div>
 </div>';

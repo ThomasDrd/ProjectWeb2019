@@ -1,3 +1,5 @@
+<!-- >Template générant l'affichage d'une ligne d'un de deal dans le panel admin et modo -->
+
 <?php
 
 echo '

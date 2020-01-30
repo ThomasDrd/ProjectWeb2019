@@ -1,4 +1,6 @@
-<?php session_start(); 
+<!-- >Template générant le header -->
+
+<?php session_start();
  $this->load->helper('url');?>
 
 <html lang="fr">

@@ -1,3 +1,5 @@
+<!-- >Template générant l'affichage d'une ligne d'un utilisateur dans le panel admin -->
+
 <?php
 	echo '
 	<tr>

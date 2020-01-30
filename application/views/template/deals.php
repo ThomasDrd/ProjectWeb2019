@@ -1,4 +1,4 @@
-
+<!-- >Template générant l'affichage d'un deal -->
 
 <div class="card m-2">
 			<div class="card-title">
@@ -8,7 +8,6 @@
 			<div class="card-body">
 
 				<p class="card-text"><?php echo $de->description; ?></p>
-				<p class="card-text"> Nombre de commentaires:</p>
 			</div>
 			<div class="card-footer text-muted">
 				<p class="card-text">Ajouté il y à <?php $fuseau  = new DatetimeZone('Europe/Paris');
