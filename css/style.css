@@ -57,3 +57,8 @@ textarea.form-control
 	font-size: 20px;
 	text-align: justify;
 }
+
+.comment-content
+{
+	margin-left: 10px;
+}

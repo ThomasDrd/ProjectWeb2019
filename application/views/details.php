@@ -60,8 +60,8 @@ if(!empty($comments)){
 				echo '<a type="button" href="'.base_url('deal/deleteComment/').$comment->comment_id.'?deal='.$de->deal_id.'">X</a>';
 			}
 		}
-			echo '<strong class="card-title">'.$comment->pseudo.'</strong><small class="text-muted">  le  '. $comment->date .'</small>
-				  <p class="card-text">'.$comment->comment.'</p>';
+			echo '<strong class="card-title comment-content">'.$comment->pseudo.'</strong><small class="text-muted">  le  '. $comment->date .'</small>
+				  <p class="card-text comment-content">'.$comment->comment.'</p>';
 	}
 
 echo '</div>
