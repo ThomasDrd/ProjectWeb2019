@@ -12,6 +12,7 @@ class Deal extends CI_Controller
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
 		$this->load->model('Comments_Model');
+		$this->config->set_item('language', 'french');
 	}
 
 
@@ -22,7 +23,7 @@ class Deal extends CI_Controller
 	 */
 	public function dealcreate()
 	{
-		$this->form_validation->set_rules('nom', 'Nom', 'required|max_length[50]', array('required' => 'Veuillez entrer un nom de deal'));
+		$this->form_validation->set_rules('nom', 'Nom', 'required|max_length[50]');
 		$this->form_validation->set_rules('description','Description', 'max_length[255]');
 		$this->form_validation->set_rules('conditions','Conditions', 'max_length[50]');
 
@@ -44,7 +45,7 @@ class Deal extends CI_Controller
 
 
 			$this->Deal_Model->addDeal($nom, $description, $conditions, $user, $dateExpiration, $dateDebut);
-			header('Location: '.base_url('pages/index'));
+			header('Location: '.base_url('pages/myDeals'));
 		}
 	}
 
@@ -55,7 +56,7 @@ class Deal extends CI_Controller
 	 */
 	public function dealUpdate($id)
 	{
-		$this->form_validation->set_rules('nom', 'Nom', 'required|max_length[50]', array('required' => 'Veuillez entrer un nom de deal'));
+		$this->form_validation->set_rules('nom', 'Nom', 'required|max_length[50]');
 		$this->form_validation->set_rules('description','Description', 'max_length[255]');
 		$this->form_validation->set_rules('conditions','Conditions', 'max_length[50]');
 
@@ -79,19 +80,25 @@ class Deal extends CI_Controller
 
 
 			$this->Deal_Model->updateDeal($nom, $descrition, $conditions, $dateExpiration, $dateDebut, $id);
-			header('Location: '.base_url('pages/admin'));
+			header('Location: '.base_url('pages/myDeals'));
 		}
 	}
 
 
 	/*
 	 * Execution suppression d'un deal
-	 * Param : $id => id du deal
+	 * Param : $id
 	 */
-	public function dealDelete($idDeal)
+	public function dealDelete($id)
 	{
-		$this->Deal_Model->deleteDeal($idDeal);
-		header('Location: '.base_url('pages/admin'));
+		$comments = $this->Comments_Model->searchByDeal($id);
+		foreach ($comments as $com)
+		{
+			$this->Comments_Model->deleteCommentToDeal($com->comment_id);
+		}
+
+		$this->Deal_Model->deleteDeal($id);
+		header('Location: '.base_url('pages/myDeals'));
 	}
 
 

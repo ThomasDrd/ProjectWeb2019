@@ -98,6 +98,22 @@ class Deal_Model extends CI_Model
 	}
 
 	/*
+	 * recherche des deal posté d'un utilisateur en fonction de son $id
+	 */
+	public function showUsersDealOnline($id)
+	{
+		return $this->db->query('SELECT * FROM deals WHERE user_id = '. $id .' AND posted LIKE 1')->result();
+	}
+
+	/*
+	 * recherche des deal non posté d'un utilisateur en fonction de son $id
+	 */
+	public function showUsersDealOffline($id)
+	{
+		return $this->db->query('SELECT * FROM deals WHERE user_id = '. $id .' AND posted LIKE 0')->result();
+	}
+
+	/*
 	 * Suppression du deal d'$id
 	 */
 	public function deleteDeal($id)

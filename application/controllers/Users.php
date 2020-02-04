@@ -15,6 +15,7 @@ class Users extends CI_Controller {
 		$this->load->model('Comments_Model');
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
+		$this->config->set_item('language', 'french');
 	}
 
 
@@ -26,8 +27,8 @@ class Users extends CI_Controller {
 	 */
     	public function loguser()
     {
-		$this->form_validation->set_rules('mail', 'Mail', 'required|valid_email', array('required' => 'Veuillez entrer un mail', 'valid_email' => 'Veuillez entrer un mail valide'));
-		$this->form_validation->set_rules('pwd', 'Pwd', 'required', array('required' => 'Veuillez entrer un mot passe'));
+		$this->form_validation->set_rules('mail', 'Mail', 'required|valid_email');
+		$this->form_validation->set_rules('pwd', 'Password', 'required');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -82,8 +83,8 @@ class Users extends CI_Controller {
 		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required');
 		$this->form_validation->set_rules('nom', 'Nom', 'required');
 		$this->form_validation->set_rules('prenom', 'Prenom', 'required');
-		$this->form_validation->set_rules('pwd', 'Pwd', 'required');
-		$this->form_validation->set_rules('pwdc', 'pwd conf', 'required|matches[pwd]');
+		$this->form_validation->set_rules('pwd', 'Password', 'required');
+		$this->form_validation->set_rules('pwdc', 'Password Confirmation', 'required|matches[pwd]');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -118,14 +119,15 @@ class Users extends CI_Controller {
 	{
 		$deals = $this->Deal_Model->showUsersDeal($id);
 		$coms = $this->Comments_Model->searchByUser($id);
-		foreach ($deals as $deal)
-		{
-			$this->Deal_Model->deleteDeal($deal->deal_id);
-		}
 
 		foreach ($coms as $com)
 		{
 			$this->Comments_Model->deleteCommentToDeal($com->comment_id);
+		}
+
+		foreach ($deals as $deal)
+		{
+			$this->Deal_Model->deleteDeal($deal->deal_id);
 		}
 
 		$this->User_Model->delete($id);
@@ -137,13 +139,13 @@ class Users extends CI_Controller {
 	 */
 	public function userCreate()
 	{
-		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required',array('required' => 'Veuillez entrer un pseudo'));
-		$this->form_validation->set_rules('nom', 'Nom', 'required',array('required' => 'Veuillez entrer un nom'));
-		$this->form_validation->set_rules('prenom', 'Prenom', 'required',array('required' => 'Veuillez entrer un prenom'));
-		$this->form_validation->set_rules('mail', 'mail', 'required|valid_email|is_unique[users.mail]', array('required' => 'Veuillez entrer un mail', 'valid_email' => 'Veuillez entrer un mail valide', 'is_unique' => 'Ce mail est déjà rattaché à un autre compte'));
-		$this->form_validation->set_rules('pwd', 'Pwd', 'required', array('required' => 'Veuillez entrer un mot de passe'));
-		$this->form_validation->set_rules('pwdc', 'pwd conf', 'required|matches[pwd]', array('required' => 'Les mot de passe ne correspondent pas'));
-		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required', array('required' => 'Veuillez entrer un mot de pseudo'));
+		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required');
+		$this->form_validation->set_rules('nom', 'Nom', 'required');
+		$this->form_validation->set_rules('prenom', 'Prenom', 'required');
+		$this->form_validation->set_rules('mail', 'mail', 'required|valid_email|is_unique[users.mail]');
+		$this->form_validation->set_rules('pwd', 'Password', 'required');
+		$this->form_validation->set_rules('pwdc', 'Password Confirmation', 'required|matches[pwd]');
+		$this->form_validation->set_rules('pseudo', 'Pseudo', 'required');
 
 		if ($this->form_validation->run() == FALSE)
 		{
@@ -163,20 +165,6 @@ class Users extends CI_Controller {
 			header('Location: '.base_url('pages/login'));
 		}
 	}
-	/*
-	 *  Fonction qui permet de renvoyer tout les deals crées par un utilisateur.
-	 */
-
-	public function myDeals()
-	{
-		session_start();
-		$user = $_SESSION['idUser'];
-		session_write_close();
-		$this->load->database();
-		$select['deal'] = $this->Deal_Model->showUsersDeal($user);
-		$this->load->view('myDeals', $select);
-	}
-
 
 	/*
 	 * Fonction qui permet de update le rôle d'un utilisateur. Le paramètre est l'id de l'utilisateur /!\ A savoir qu'un admin ne peut être rétrogradé que depuis la base de données pour des raisons évidentes de sécurité. 

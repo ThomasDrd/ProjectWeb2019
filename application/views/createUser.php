@@ -18,16 +18,6 @@ $input = array(
 echo form_label('Pseudo', 'pseudo');
 echo form_input($input);
 
-$image_properties = array(
-	'src'   => 'images/picture.jpg',
-	'alt'   => 'Me, demonstrating how to eat 4 slices of pizza at one time',
-	'class' => 'post_images',
-	'width' => '200',
-	'height'=> '200',
-	'title' => 'That was quite a night',
-	'rel'   => 'lightbox'
-);
-
 
 $input = array(
 	'name' => 'nom',

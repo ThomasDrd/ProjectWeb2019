@@ -43,7 +43,7 @@
 						';
 				}
 				echo ('<li class="nav-item">
-							<a class="nav-link" href="'.base_url('users/myDeals').'">Mes deals</a>
+							<a class="nav-link" href="'.base_url('pages/myDeals').'">Mes deals</a>
 						   </li>');
 				echo ('<li class="nav-item">
 							<a class="nav-link" href="'.base_url('pages/compte').'">Bienvenue '.$_SESSION['user'].'</a>

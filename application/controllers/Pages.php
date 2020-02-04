@@ -38,6 +38,27 @@ class Pages extends CI_Controller {
 		$this->load->view('index', $select, $showResearch);
 	}
 
+	/*
+ 	*  Affichage de la liste des deals d'un utilisateur
+ 	*/
+	public function myDeals()
+	{
+		session_start();
+		if (isset($_SESSION['idUser']))
+		{
+			$user = $_SESSION['idUser'];
+			session_write_close();
+			$this->load->database();
+			$select['dealOnline'] = $this->Deal_Model->showUsersDealOnline($user);
+			$select['dealOffline'] = $this->Deal_Model->showUsersDealOffline($user);
+			$this->load->view('myDeals', $select);
+		}
+		else
+		{
+			header('Location: '.base_url('pages/index'));
+		}
+	}
+
 	################################################## DEAL ##################################################
 	/*
 	 * Chargement de la page de details d'un deal
@@ -59,11 +80,6 @@ class Pages extends CI_Controller {
 	public function createDeal()
 	{
 		$this->load->view('createDeal');
-	}
-	// -------------------------- Chargement de la page d'accueil ----------------------------
-	public function accueil()
-	{
-		$this->load->view('accueil');
 	}
 
 
