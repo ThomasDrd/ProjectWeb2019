@@ -154,6 +154,14 @@ class Pages extends CI_Controller {
 	}
 
 	/*
+	 * Page de suppression d'un utilisateur
+	 */
+	public function moveUser()
+	{
+		$this->load->view('moveUser');
+	}
+
+	/*
 	 * Page de creation d'un utilisateur
 	 */
 	public function createUser()
