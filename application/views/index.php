@@ -36,7 +36,7 @@ echo '<div class="form-group">'.form_input($dateEnd).'</div>';
 echo form_submit('submit', 'Rechercher', array('class' => 'btn btn-dark btn-connect'));
 echo form_close();
 
-echo '<div class="row">';
+echo '<div class="row text">';
 echo '<p>Super forfait mobile est un site vous permettant de retrouver les meilleures offres du moment proposée par les opérateurs<br/>
 		Les offres présentent ici sont toutes fournies par la communautée<br/>
 		</p>';

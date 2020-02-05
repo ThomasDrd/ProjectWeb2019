@@ -1,6 +1,13 @@
 body{
 	background-color: #3f5a73;
 }
+
+.text
+{
+	color: #9fe855;
+	font-weight: bold;
+}
+
 .container
 {
 	margin-top: 70px;
@@ -50,6 +57,7 @@ h4 > p
 	margin: 10px;
 	font-size: 30px;
 	font-weight: bold;
+	color: #9fe855;
 }
 
 a
@@ -64,9 +72,15 @@ textarea.form-control
 
 .copyright
 {
-	color: #343A40;
+	color: #ffffff;
 	font-size: 20px;
 	text-align: justify;
+}
+
+.copyright > h1
+{
+	color: #9fe855;
+	text-decoration: underline #9fe855;
 }
 
 p.comment-content , .deal > .card-text{

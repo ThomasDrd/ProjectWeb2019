@@ -4,7 +4,7 @@ include 'template/header.php';
 
 echo form_open('users/userCreate');
 
-echo '<div class="form-group">';
+echo '<div class="form-group text">';
 
 
 $input = array(

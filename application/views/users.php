@@ -3,7 +3,7 @@ include 'template/header.php';
 
 echo form_open('users/userUpdate/'.$user[0]->user_id);
 
-echo '<div class="form-group">';
+echo '<div class="form-group text">';
 
 	$input = array(
 	'name' => 'pseudo',

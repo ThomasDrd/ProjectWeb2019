@@ -7,8 +7,8 @@ foreach ($deal as $de){
 	<div class="row no-gutters">
 		
 			<div class="card-body deal">
-				<a class="card-title">'.$de->nom.'</a>
-				<p class="card-text">Description :'.$de->description.'</p>
+				<a class="card-title text">'.$de->nom.'</a>
+				<p class="card-text">Description : '.$de->description.'</p>
 				<p class="card-text">Conditions : '. $de->conditions .'</p>
 				<p class="card-text">Date de démarrage : '. $de->date_deb .'</p>
 				<p class="card-text">Date de fin : '. $de->date_exp .'</p>
