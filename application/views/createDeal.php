@@ -14,7 +14,7 @@ $input = array(
 	'size'  => '50',
 	'style' => 'width:50%'
 );
-echo form_label('Le nom de votre deal', 'nom');
+echo form_label('Nom de votre deal', 'nom');
 echo form_input($input);
 
 $input = array(
@@ -23,7 +23,7 @@ $input = array(
 	'class' => 'form-control',
 
 );
-echo form_label('La description de votre deal', 'description');
+echo form_label('Description', 'description');
 echo form_textarea($input);
 
 $input = array(
@@ -32,7 +32,7 @@ $input = array(
 	'class' => 'form-control'
 
 );
-echo form_label('Les conditions du deal', 'conditions');
+echo form_label('Conditions du deal', 'conditions');
 echo form_input($input);
 
 $input = array(
@@ -41,7 +41,7 @@ $input = array(
 	'class' => 'form-control',
 	'type' => 'date'
 );
-echo form_label('Date début', 'nom');
+echo form_label('Date de début', 'nom');
 echo form_input($input);
 
 $input = array(
@@ -50,10 +50,10 @@ $input = array(
 	'class' => 'form-control',
 	'type' => 'date'
 );
-echo form_label('Date de l\'expiration', 'dateexp');
+echo form_label('Date d\'expiration', 'dateexp');
 echo form_input($input);
 
-echo form_submit('submit', 'Submit Deal!', array('class' => 'btn btn-dark btn-add'));
+echo form_submit('submit', 'Submit Deal !', array('class' => 'btn btn-dark btn-add'));
 
 echo '</div>';
 if(isset($message_display))

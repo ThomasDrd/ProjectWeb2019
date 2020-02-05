@@ -55,7 +55,7 @@ class Users extends CI_Controller {
 				}
 			}
 			else{
-				$data['message_display'] = 'Aucun utilisateurs pour cet Email';
+				$data['message_display'] = 'Aucun utilisateur pour cet Email';
 				$this->load->view('login', $data);
 			}
 
