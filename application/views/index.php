@@ -37,8 +37,9 @@ echo form_submit('submit', 'Rechercher', array('class' => 'btn btn-dark btn-conn
 echo form_close();
 
 echo '<div class="row text">';
-echo '<p>Super forfait mobile est un site vous permettant de retrouver les meilleures offres du moment proposée par les opérateurs<br/>
-		Les offres présentent ici sont toutes fournies par la communautée<br/>
+echo '<p>Super forfait mobile est un site vous permettant de retrouver les meilleures offres du moment proposées par les opérateurs.<br/>
+		Les offres présentées ici sont toutes partagées par la communautée<br/><br/>
+		Ces offres sont susceptibles de vous intéresser :
 		</p>';
 echo '</div>';
 echo '<div class="row">';

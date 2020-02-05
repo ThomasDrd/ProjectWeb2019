@@ -9,7 +9,7 @@
 				<p class="card-text text"><?php echo $de->description; ?></p>
 			</div>
 			<div class="card-footer text-muted">
-				<p class="card-text">Ajouté il y à <?php $fuseau  = new DatetimeZone('Europe/Paris');
+				<p class="card-text">Ajouté il y a <?php $fuseau  = new DatetimeZone('Europe/Paris');
 				$dateNow = new Datetime('now', $fuseau);
 				$dateOld = new Datetime($de->date_ajout, $fuseau);
 				$date = $dateOld->diff($dateNow);

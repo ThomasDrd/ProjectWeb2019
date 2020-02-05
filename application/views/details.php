@@ -13,7 +13,7 @@ foreach ($deal as $de){
 				<p class="card-text">Date de démarrage : '. $de->date_deb .'</p>
 				<p class="card-text">Date de fin : '. $de->date_exp .'</p>
 				<div class="card-footer text-muted">
-				<p class="card-text"><small>Ajouté il y à ';
+				<p class="card-text"><small>Ajouté il y a ';
 						$fuseau  = new DatetimeZone('Europe/Paris');
 						$dateNow = new Datetime('now', $fuseau);
 						$dateOld = new Datetime($de->date_ajout, $fuseau);
