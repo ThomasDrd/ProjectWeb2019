@@ -57,8 +57,9 @@ echo form_input($input);
 echo form_submit('submit', 'Update !', array('class' => 'btn btn-dark btn-add'));
 
 echo '<a type="button" class="btn btn-danger" href="' . base_url('Pages/deleteDeal/') . $deal[0]->deal_id .'">Supprimer</a>';
+
 echo '</div>';
-if(isset($message_display))
+if(isset($message_display) && $message_display != "")
 {
 	echo '<h4 class="alert alert-danger text-center" role="alert">' . $message_display . '</h4>';
 }

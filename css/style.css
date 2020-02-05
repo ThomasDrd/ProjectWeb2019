@@ -23,6 +23,11 @@ body{
 	margin: 10px  0 10px 0;
 }
 
+h4
+{
+	margin: 10px;
+}
+
 h4 > p
 {
 	margin: 0;
@@ -42,8 +47,14 @@ h4 > p
 
 .card-title
 {
+	margin: 10px;
 	font-size: 30px;
 	font-weight: bold;
+}
+
+a
+{
+	text-decoration: none !important;
 }
 
 textarea.form-control
@@ -58,7 +69,12 @@ textarea.form-control
 	text-align: justify;
 }
 
-.comment-content
+p.comment-content , .deal > .card-text{
+	margin-left: 20px;
+}
+
+
+.table, .navbar, .card
 {
-	margin-left: 10px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

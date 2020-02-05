@@ -6,7 +6,7 @@ foreach ($deal as $de){
 <div class="card mb-3 details">
 	<div class="row no-gutters">
 		
-			<div class="card-body">
+			<div class="card-body deal">
 				<a class="card-title">'.$de->nom.'</a>
 				<p class="card-text">Description :'.$de->description.'</p>
 				<p class="card-text">Conditions : '. $de->conditions .'</p>
@@ -45,56 +45,60 @@ foreach ($deal as $de){
 	</div>
 </div>';
 
-if(!empty($comments)){
-	echo '
+if ($de->posted)
+{
+	if(!empty($comments)){
+		echo '
 		<div class="card comment mb-3">
 		<div class="card-header">
     	Commentaires
   		</div>
 		<div class="card-body">';
 
-	foreach ($comments as $comment){
-		if (isset($_SESSION['role']))
-		{
-			if( $_SESSION['role'] == 1 || $comment->user_id ==  $_SESSION['idUser']){
-				echo '<a type="button" href="'.base_url('deal/deleteComment/').$comment->comment_id.'?deal='.$de->deal_id.'">X</a>';
+		foreach ($comments as $comment){
+			if (isset($_SESSION['role']))
+			{
+				if( $_SESSION['role'] == 1 || $comment->user_id ==  $_SESSION['idUser']){
+					echo '<a type="button" href="'.base_url('deal/deleteComment/').$comment->comment_id.'?deal='.$de->deal_id.'">X</a>';
+				}
 			}
-		}
-			echo '<strong class="card-title comment-content">'.$comment->pseudo.'</strong><small class="text-muted">  le  '. $comment->date .'</small>
+			echo '<strong class="card-title comment-content">'.$comment->pseudo.'</strong><small class="text-muted"> posté le  '. $comment->date .'</small>
 				  <p class="card-text comment-content">'.$comment->comment.'</p>';
-	}
+		}
 
-echo '</div>
+		echo '</div>
 </div>';
-}
-if(isset($_SESSION['role'])){
-			
+	}
+	if(isset($_SESSION['role'])){
 
-	echo'<div class="card mb-3 details">
+
+		echo'<div class="card mb-3 details">
 			<div class="card-body">';
 
-	$hidden = array('dealId' => $de->deal_id);
-	echo form_open('Deal/addComment/'.$de->deal_id, '', $hidden);
-	echo form_label('Votre commentaire :');
-	echo '<div class="form-group">';
+		$hidden = array('dealId' => $de->deal_id);
+		echo form_open('Deal/addComment/'.$de->deal_id, '', $hidden);
+		echo form_label('Votre commentaire :');
+		echo '<div class="form-group">';
 
-	$input = array(
-	'name' => 'commentAdd',
-	'id' => 'commentAdd',
-	'class' => 'form-control',
-	'type' => 'textarea');
-	echo form_textarea($input);
+		$input = array(
+			'name' => 'commentAdd',
+			'id' => 'commentAdd',
+			'class' => 'form-control',
+			'type' => 'textarea');
+		echo form_textarea($input);
 
-	echo form_submit('submit', 'Envoyer', array('class' => 'btn btn-dark btn-connect'));
+		echo form_submit('submit', 'Envoyer', array('class' => 'btn btn-dark btn-connect'));
 
-	echo 	'</div>
+		echo 	'</div>
 		</div>
 	</div>';
-	if(isset($message_display))
-	{
-		echo '<h4 class="alert alert-danger text-center" role="alert">' . $message_display . '</h4>';
+		if(isset($message_display))
+		{
+			echo '<h4 class="alert alert-danger text-center" role="alert">' . $message_display . '</h4>';
+		}
 	}
 }
+
  
 include  'template/footer.php';
 

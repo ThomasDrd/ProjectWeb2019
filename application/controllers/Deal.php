@@ -62,10 +62,10 @@ class Deal extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$data['message_display'] = validation_errors();
 			$data = array(
 				'deal' => $this->Deal_Model->searchByid($id),
-				'message_display' => validation_errors() );
+				'message_display' => validation_errors()
+			);
 
 				$this->load->view('updateDeal', $data);
 		}
@@ -131,11 +131,10 @@ class Deal extends CI_Controller
 
 		$dealId = $_POST['dealId'];
 
-		$this->form_validation->set_rules('commentAdd','CommentAdd', 'required|max_length[255]');
+		$this->form_validation->set_rules('commentAdd','Commentaire', 'required|max_length[255]');
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$data['message_display'] = validation_errors();
 			$data = array(
 				'deal' => $this->Deal_Model->searchByid($id),
 				'comments' => $this->Comments_Model->searchByDeal($id),

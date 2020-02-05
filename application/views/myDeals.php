@@ -8,7 +8,7 @@ echo'
 if (sizeof($dealOnline) > 0)
 {
 	echo '<div class="row">';
-	echo '<h4 class="col alert alert-success text-center" >DEAL EN LIGNE</h4>';
+	echo '<h4 class="col alert alert-success text-center" >Deal en ligne</h4>';
 	echo '</div>';
 	echo '<div class="row">';
 	foreach ($dealOnline as $de)
@@ -21,7 +21,7 @@ if (sizeof($dealOnline) > 0)
 if (sizeof($dealOffline) > 0)
 {
 	echo '<div class="row">';
-	echo '<h4 class="col alert alert-danger text-center" >DEAL EN ATTENTE DE VÉRIFICATION PAR UN MODÉRATEUR</h4>';
+	echo '<h4 class="col alert alert-danger text-center" >Deal en attente de modération </h4>';
 	echo '</div>';
 	echo '<div class="row">';
 	foreach ($dealOffline as $de)
