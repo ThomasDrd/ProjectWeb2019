@@ -1,5 +1,14 @@
 <?php
 include 'template/header.php';
+
+echo '<div class="row text">';
+echo '<p>Super forfait mobile est un site vous permettant de retrouver les meilleures offres du moment proposées par les opérateurs.<br/>
+		Les offres présentées ici sont toutes partagées par la communautée<br/><br/>
+		Ces offres sont susceptibles de vous intéresser :
+		</p>';
+echo '</div>';
+
+
 $attributes = array('class' => 'form-inline');
 
 echo form_open('pages/index', $attributes);
@@ -30,12 +39,7 @@ echo '<div class="form-group">'.form_input($dateEnd).'</div>';
 echo form_submit('submit', 'Rechercher', array('class' => 'btn btn-dark btn-connect'));
 echo form_close();
 
-echo '<div class="row text">';
-echo '<p>Super forfait mobile est un site vous permettant de retrouver les meilleures offres du moment proposées par les opérateurs.<br/>
-		Les offres présentées ici sont toutes partagées par la communautée<br/><br/>
-		Ces offres sont susceptibles de vous intéresser :
-		</p>';
-echo '</div>';
+
 echo '<div class="row">';
 foreach ($deal as $de)
 {
