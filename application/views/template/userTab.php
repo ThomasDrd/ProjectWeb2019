@@ -22,5 +22,6 @@
 	}else{
 		echo 'Administrateur</td>';
 	}
-
-	echo '<td><a type="button" class="btn btn-danger" href="' . base_url('Pages/deleteUser/') . $us->user_id .'">Supprimer</a></td>';
+	if ($us->role_id != 1) {
+	    echo '<td><a type="button" class="btn btn-danger" href="' . base_url('Pages/deleteUser/') . $us->user_id .'">Supprimer</a></td>';
+	   }

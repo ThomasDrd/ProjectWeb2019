@@ -43,7 +43,7 @@ echo form_close();
 
 
 echo '<div class="row">';
-foreach ($deal as $de)
+foreach ($deal as $de)   // Affichage de tout les deals ou ceux demandé à travers la recherche
 {
 	include 'template/deals.php';
 }
