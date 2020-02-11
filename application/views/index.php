@@ -2,7 +2,7 @@
 include 'template/header.php';
 
 echo '<div class="row text">';
-echo '<p>Les Super\'s forfait mobile est un site vous permettant de retrouver les meilleures offres mobiles du moment.<br/>
+echo '<p>Les Super\'s forfaits mobiles est un site vous permettant de retrouver les meilleures offres mobiles du moment.<br/>
 		Les offres présentées ici sont toutes partagées par la communauté<br/><br/>
 		Ces deals sont susceptibles de vous intéresser :
 		</p>';
