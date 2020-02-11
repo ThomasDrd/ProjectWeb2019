@@ -2,6 +2,7 @@
 include 'template/header.php';
 
 foreach ($deal as $de){
+	$ded = $de->date_exp;
 	echo '
 <div class="card mb-3 details">
 	<div class="row no-gutters">
@@ -11,7 +12,7 @@ foreach ($deal as $de){
 				<p class="card-text">Description : '.$de->description.'</p>
 				<p class="card-text">Conditions : '. $de->conditions .'</p>
 				<p class="card-text">Date de démarrage : '. $de->date_deb .'</p>
-				<p class="card-text">Date de fin : '. $de->date_exp .'</p>
+				<p class="card-text">Date de fin : '. $ded->format('%d/%m/%y') .'</p>
 				<div class="card-footer text-muted">
 				<p class="card-text"><small>Ajouté il y a ';
 						$fuseau  = new DatetimeZone('Europe/Paris');
@@ -19,7 +20,13 @@ foreach ($deal as $de){
 						$dateOld = new Datetime($de->date_ajout, $fuseau);
 						$date = $dateOld->diff($dateNow);
 						if($date->days == 0){
-							$date1 = $date->format('%hh%i');
+							if($date->h == 0){
+								$date1 = $date->format('%i minutes');
+							}elseif($date->h == 1){
+								$date1 = $date->format('%h heure et %i minutes');
+							}else{
+								$date1 = $date->format('%h heures et %i minutes');
+							}
 						}elseif($date->days == 1){
 							if($date->h == 0){
 								$date1 = $date->format('%d jour et %i minutes');
@@ -31,7 +38,7 @@ foreach ($deal as $de){
 						}else{
 							if($date->h == 0){
 								$date1 = $date->format('%d jours et %i minutes');
-							}elseif($date->h == 1){
+							}elseif($date->h == 0){
 								$date1 = $date->format('%d jours, %h heure et %i minutes');
 							}else{
 								$date1 = $date->format('%d jours, %h heures et %i minutes');
@@ -59,7 +66,7 @@ if ($de->posted)
 			if (isset($_SESSION['role']))
 			{
 				if( $_SESSION['role'] == 1 || $comment->user_id ==  $_SESSION['idUser']){
-					echo '<a type="button" href="'.base_url('deal/deleteComment/').$comment->comment_id.'?deal='.$de->deal_id.'">X</a>';
+					echo '<a type="button" class="btnDelete" href="'.base_url('deal/deleteComment/').$comment->comment_id.'?deal='.$de->deal_id.'">X</a>';
 				}
 			}
 			echo '<strong class="card-title comment-content">'.$comment->pseudo.'</strong><small class="text-muted"> posté le  '. $comment->date .'</small>
