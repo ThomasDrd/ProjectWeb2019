@@ -19,7 +19,13 @@ foreach ($deal as $de){
 						$dateOld = new Datetime($de->date_ajout, $fuseau);
 						$date = $dateOld->diff($dateNow);
 						if($date->days == 0){
-							$date1 = $date->format('%hh%i');
+							if($date->h == 0){
+								$date1 = $date->format('%i minutes');
+							}elseif($date->h == 1){
+								$date1 = $date->format('%h heure et %i minutes');
+							}else{
+								$date1 = $date->format('%h heures et %i minutes');
+							}
 						}elseif($date->days == 1){
 							if($date->h == 0){
 								$date1 = $date->format('%d jour et %i minutes');
@@ -31,7 +37,7 @@ foreach ($deal as $de){
 						}else{
 							if($date->h == 0){
 								$date1 = $date->format('%d jours et %i minutes');
-							}elseif($date->h == 1){
+							}elseif($date->h == 0){
 								$date1 = $date->format('%d jours, %h heure et %i minutes');
 							}else{
 								$date1 = $date->format('%d jours, %h heures et %i minutes');
