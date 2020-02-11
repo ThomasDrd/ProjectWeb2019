@@ -4,7 +4,7 @@ body{
 
 .text
 {
-	color: #9fe855;
+	color: white;
 	font-weight: bold;
 }
 
@@ -57,7 +57,7 @@ h4 > p
 	margin: 10px;
 	font-size: 30px;
 	font-weight: bold;
-	color: #9fe855;
+	color: white;
 }
 
 a
@@ -79,8 +79,8 @@ textarea.form-control
 
 .copyright > h1
 {
-	color: #9fe855;
-	text-decoration: underline #9fe855;
+	color: white;
+	text-decoration: underline white;
 }
 
 p.comment-content , .deal > .card-text{
