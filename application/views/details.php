@@ -14,6 +14,11 @@ foreach ($deal as $de){
 				<p class="card-text">Date de fin : '. substr($de->date_exp,0,10) .'</p>
 				<div class="card-footer text-muted">
 				<p class="card-text"><small>Ajouté il y a ';
+
+				/*
+				 * Gestion de l'affichage des dates en fonction de la date de création du deal, et la date actuelle
+				 */ 
+
 						$fuseau  = new DatetimeZone('Europe/Paris');
 						$dateNow = new Datetime('now', $fuseau);
 						$dateOld = new Datetime($de->date_ajout, $fuseau);
@@ -53,6 +58,9 @@ foreach ($deal as $de){
 
 if ($de->posted)
 {
+ /*
+  * Affichage des commentaires sous le deals, et gestion de leurs suppression en fonction du role 
+  */
 	if(!empty($comments)){
 		echo '
 		<div class="card comment mb-3">

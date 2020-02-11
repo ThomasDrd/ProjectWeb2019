@@ -29,35 +29,42 @@ class Deal_Model extends CI_Model
 	{
 		$where = '';
 		$research = '';
+
+		/*
+		 * Je vérifie chaque variable pour écrire la conditions WHERE au fur et à mesure, pour chaque variable de recherche définie
+		 */
+
 		if(isset($search) AND !empty($search)){
-			//$where .= "description REGEXP '";
-			$research .= "'";
-			foreach ($search as $key => $value) {
+			$research .= "'";			
+			foreach ($search as $key => $value) {  // $value représente chaque mot qui à été écrit séparé par un espace, il peut y en avoir 1 ou plusieurs.
 				if($key != 0){
-					$research .= '|';
-				}
-				$research .= $value;
+					$research .= '|';    //Ecrit le caractère de séparation | si il y a plus d'un mot, pour séparer chaque mot de recherche.
+				}	
+				$research .= $value;	//Ecrit le mot avec lequel on aimerait rechercher les deals.
 			}
 			$research .= "' ";
-			$where .= " CONCAT(description, nom, conditions) REGEXP ".$research." ";
+			$where .= " CONCAT(description, nom, conditions) REGEXP ".$research." ";  //Concatène la description, le nom et les conditions pour rechercher dans tout ces champs, puis j'utilise la fonction REGEXP pour rechercher tout les mots qui sont stocker dans la variable $research vu précédemment.
 		}
 
+		
 		if(isset($dateS) AND !empty($dateS)){
 			if(isset($search) AND !empty($search)){
+					// Si l'utilisateur à utiliser plusieurs paramètre de recherche alors on ajoute un 'AND' pour rajouter cette conditions à la précédente.
 				$where .= ' AND ';
 			}
-			$where .= "date_ajout >= '". $dateS ."'";
+			$where .= "date_ajout >= '". $dateS ."'"; //Ajoute la condition de date antérieur à celle de l'ajout du deal.
 		}
 
 		if(isset($dateE) AND !empty($dateE)){
 			if( (isset($search) AND !empty($search)) OR (isset($dateS) AND !empty($dateS)) ){
+				 // Si l'utilisateur à utiliser plusieurs paramètre de recherche alors on ajoute un 'AND' pour rajouter cette conditions à la précédente
 				$where .= ' AND ';
 			}
-			$where .= "date_ajout <= '". $dateE ."'";
+			$where .= "date_ajout <= '". $dateE ."'"; //Ajoute la condition de date ultérieur à celle de l'ajout du deal.
 		}
 
 		if(empty($search) AND empty($dateE) AND empty($dateS)){
-			$where = 1;
+			$where = 1;	//Si toute les variables sont vide alors il n'y a pas de conditions donc j'écris 1 pour chercher tout les deals
 		}
 		return  $this->db->query('SELECT * FROM deals WHERE posted AND '. $where)->result();
 	

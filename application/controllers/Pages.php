@@ -23,10 +23,17 @@ class Pages extends CI_Controller {
 	{
 		$showResearch = 0;
 
+		//Je vérifie qu'aumoins un paramètre de recherche à correctement été compléter.
+
 		if( (isset($_POST['search']) AND !empty($_POST['search'])) OR (isset($_POST['dateStart']) AND !empty($_POST['dateStart'])) OR (isset($_POST['dateEnd']) AND !empty($_POST['dateEnd'])) ) {
+
+			/* Si aumoins un paramètre est vérifié, alors je défini les paramètres dans une variable, pour les envoyer au modèle. 
+			   Il se peut qu'un seul paramètre soit vérifié alors les autres seront défini vide pour qu'on puisse rechercher selon un seul critère, et pas obligatoirement tout les critères.
+			 */
 			$search = (!empty($_POST['search'])) ? preg_split('/\s+/', $_POST['search']) : '';
 			$dateStart = (!empty($_POST['dateStart'])) ? $_POST['dateStart'] : '';
 			$dateEnd = (!empty($_POST['dateEnd'])) ? $_POST['dateEnd'] : '' ;
+
 			$select['deal'] = $this->Deal_Model->searchDealByResearch($search, $dateStart, $dateEnd);
 			$showResearch = 1;
 

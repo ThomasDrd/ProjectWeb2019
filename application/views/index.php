@@ -11,6 +11,8 @@ echo '</div>';
 
 $attributes = array('class' => 'form-inline');
 
+//Formulaire qui récupère les arguments de la recherche d'un deal
+
 echo form_open('pages/index', $attributes);
 
 	$research = array(
