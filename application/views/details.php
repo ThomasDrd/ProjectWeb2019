@@ -2,7 +2,6 @@
 include 'template/header.php';
 
 foreach ($deal as $de){
-	$ded = $de->date_exp;
 	echo '
 <div class="card mb-3 details">
 	<div class="row no-gutters">
@@ -11,8 +10,8 @@ foreach ($deal as $de){
 				<a class="card-title text">'.$de->nom.'</a>
 				<p class="card-text">Description : '.$de->description.'</p>
 				<p class="card-text">Conditions : '. $de->conditions .'</p>
-				<p class="card-text">Date de démarrage : '. $de->date_deb .'</p>
-				<p class="card-text">Date de fin : '. $ded->format('%d/%m/%y') .'</p>
+				<p class="card-text">Date de démarrage : '. substr($de->date_deb,0,10) .'</p>
+				<p class="card-text">Date de fin : '. substr($de->date_exp,0,10) .'</p>
 				<div class="card-footer text-muted">
 				<p class="card-text"><small>Ajouté il y a ';
 						$fuseau  = new DatetimeZone('Europe/Paris');

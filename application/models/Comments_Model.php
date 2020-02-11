@@ -39,4 +39,10 @@ class comments_Model extends CI_Model
     {
         $this->db->query('DELETE FROM comments WHERE comment_id = '.$id);
     }
+
+    public function deleteAllCommentFromDeal($id)
+    {
+        $this->db->query('DELETE FROM comments WHERE deal_id = '.$id);
+    }
 }
+ 

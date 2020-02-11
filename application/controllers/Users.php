@@ -127,6 +127,7 @@ class Users extends CI_Controller {
 
 		foreach ($deals as $deal)
 		{
+			$this->Comments_Model->deleteAllCommentFromDeal($deal->deal_id);
 			$this->Deal_Model->deleteDeal($deal->deal_id);
 		}
 

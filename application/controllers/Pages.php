@@ -63,11 +63,21 @@ class Pages extends CI_Controller {
 	/*
 	 * Chargement de la page de details d'un deal
 	 */
-	public function details($id)
+	public function details($id = '')
 	{
-		$select['deal'] = $this->Deal_Model->searchByid($id);
-		$select['comments'] = $this->Comments_Model->searchByDeal($id);
-		$this->load->view('details', $select);
+		if(empty($id)){
+			header('Location: '.base_url('pages/index'));
+		}else{
+
+			$select['deal'] = $this->Deal_Model->searchByid($id);
+			$select['comments'] = $this->Comments_Model->searchByDeal($id);
+
+			if(!empty($select['deal']) OR !empty($select['deal'])){
+				$this->load->view('details', $select);
+			}else{
+				header('Location: '.base_url('pages/index'));
+			}
+		}
 
 	}// -----------------------------------  Page copyright - Contact--------------------------------------
 	public function copyright()
