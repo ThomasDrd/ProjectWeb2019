@@ -10,8 +10,8 @@ foreach ($deal as $de){
 				<a class="card-title text">'.$de->nom.'</a>
 				<p class="card-text">Description : '.$de->description.'</p>
 				<p class="card-text">Conditions : '. $de->conditions .'</p>
-				<p class="card-text">Date de démarrage : '. substr($de->date_deb,0,10) .'</p>
-				<p class="card-text">Date de fin : '. substr($de->date_exp,0,10) .'</p>
+				<p class="card-text">Date de démarrage : '. date('d-m-yy', strtotime($de->date_deb)) .'</p>
+				<p class="card-text">Date de fin : '. date('d-m-yy', strtotime($de->date_exp)) .'</p>
 				<div class="card-footer text-muted">
 				<p class="card-text"><small>Ajouté il y a ';
 						$fuseau  = new DatetimeZone('Europe/Paris');
@@ -68,7 +68,7 @@ if ($de->posted)
 					echo '<a type="button" class="btnDelete" href="'.base_url('deal/deleteComment/').$comment->comment_id.'?deal='.$de->deal_id.'">X</a>';
 				}
 			}
-			echo '<strong class="card-title comment-content">'.$comment->pseudo.'</strong><small class="text-muted"> posté le  '. $comment->date .'</small>
+			echo '<strong class="card-title comment-content">'.$comment->pseudo.'</strong><small class="text-muted"> posté le  '. date('d-m-yy \à H:i', strtotime($comment->date )).'</small>
 				  <p class="card-text comment-content">'.$comment->comment.'</p>';
 		}
 
